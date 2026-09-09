@@ -7,6 +7,7 @@ import { toggleWishlist } from '../redux/slices/wishlistSlice';
 import { setRFQModalOpen, setSelectedProductForRFQ } from '../redux/slices/communitySlice';
 import ProductReviewsQA from './ProductReviewsQA';
 import { FileText, ShoppingCart, SlidersHorizontal, Building2, Layers, Plus, Heart, Truck, CheckCircle2, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { API_URL } from '../config/api';
 
 export default function ProductDetailModal() {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ export default function ProductDetailModal() {
     }
     setIsCheckingPin(true);
     try {
-      const res = await fetch('http://localhost:5000/api/shipping/check-pincode', {
+      const res = await fetch(`${API_URL}/api/shipping/check-pincode`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pincode })

@@ -10,6 +10,7 @@ import {
   createRazorpayOrder, 
   openRealRazorpayCheckout 
 } from '../services/razorpayService';
+import { API_URL } from '../config/api';
 
 export default function CheckoutModal() {
   const dispatch = useDispatch();
@@ -94,7 +95,7 @@ export default function CheckoutModal() {
         }
       };
 
-      const res = await fetch('http://localhost:5000/api/orders', {
+      const res = await fetch(`${API_URL}/api/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderPayload)

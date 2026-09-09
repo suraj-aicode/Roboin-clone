@@ -55,3 +55,40 @@ npm run server
 # Terminal 2: Frontend App (Port 5173)
 npm run client
 ```
+
+---
+
+## 🌐 Deploy to Render (Backend) & Netlify (Frontend)
+
+### Part 1: Deploy Backend to Render
+
+1. Go to [Render Dashboard](https://dashboard.render.com/) and click **New + > Web Service**.
+2. Connect your GitHub repository: `https://github.com/suraj-aicode/Roboin-clone`.
+3. Configure settings:
+   - **Root Directory**: `server`
+   - **Runtime**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+4. In **Environment Variables**, add:
+   - `NODE_ENV`: `production`
+   - `PORT`: `5000`
+   - `MONGO_URI`: `your_mongodb_atlas_connection_string`
+   - `JWT_SECRET`: `your_random_secret_string`
+   - `RAZORPAY_KEY_ID`: `your_razorpay_key_id`
+   - `RAZORPAY_KEY_SECRET`: `your_razorpay_key_secret`
+5. Click **Create Web Service**.
+6. Once deployed, copy your Render URL (e.g., `https://roboin-api.onrender.com`).
+
+---
+
+### Part 2: Deploy Frontend to Netlify
+
+1. Go to [Netlify Dashboard](https://app.netlify.com/) and click **Add new site > Import an existing project**.
+2. Select **GitHub** and choose `Roboin-clone`.
+3. Netlify will auto-detect `netlify.toml`:
+   - **Base directory**: `client`
+   - **Build command**: `npm run build`
+   - **Publish directory**: `client/dist` (or `dist`)
+4. In **Site configuration > Environment variables**, add:
+   - `VITE_API_URL`: `https://roboin-api.onrender.com` *(your Render backend URL from Part 1)*
+5. Click **Deploy site**.

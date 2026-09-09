@@ -1,6 +1,6 @@
-// Real Razorpay Standard Checkout Integration Service
+import { API_URL } from '../config/api';
 
-const API_BASE = 'http://localhost:5000/api/payments';
+const API_BASE = `${API_URL}/api/payments`;
 
 /**
  * Dynamically loads the official Razorpay Checkout JavaScript SDK from CDN

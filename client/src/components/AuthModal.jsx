@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUser, setAuthModalOpen, setAuthMode, DEMO_ACCOUNTS } from '../redux/slices/authSlice';
 import { setAdminView } from '../redux/slices/orderSlice';
 import { ShieldCheck, User, Lock, Mail, Building, KeyRound, CheckCircle2, AlertCircle } from 'lucide-react';
+import { API_URL } from '../config/api';
 
 export default function AuthModal() {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ export default function AuthModal() {
     }
 
     try {
-      const endpoint = authMode === 'login' ? 'http://localhost:5000/api/auth/login' : 'http://localhost:5000/api/auth/register';
+      const endpoint = authMode === 'login' ? `${API_URL}/api/auth/login` : `${API_URL}/api/auth/register`;
       const payload = authMode === 'login' 
         ? { email: formData.email, password: formData.password }
         : formData;

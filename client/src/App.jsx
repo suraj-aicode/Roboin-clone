@@ -4,6 +4,7 @@ import { setProducts } from './redux/slices/productSlice';
 import { setOrders, setAdminView } from './redux/slices/orderSlice';
 import { setTutorialsModalOpen } from './redux/slices/communitySlice';
 import { ShieldAlert } from 'lucide-react';
+import { API_URL } from './config/api';
 
 // 12 Robu.in Exact Rebuilt Components
 import Navbar from './components/Navbar';
@@ -207,7 +208,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/products');
+        const res = await fetch(`${API_URL}/api/products`);
         const data = await res.json();
         if (data.success && data.data && data.data.length > 0) {
           dispatch(setProducts(data.data));
@@ -215,7 +216,7 @@ export default function App() {
           dispatch(setProducts(FALLBACK_PRODUCTS));
         }
 
-        const orderRes = await fetch('http://localhost:5000/api/orders');
+        const orderRes = await fetch(`${API_URL}/api/orders`);
         const orderData = await orderRes.json();
         if (orderData.success && orderData.data) {
           dispatch(setOrders(orderData.data));

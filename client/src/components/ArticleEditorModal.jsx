@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BookOpen, Send, CheckCircle2 } from 'lucide-react';
+import { API_URL } from '../config/api';
 
 export default function ArticleEditorModal({ isOpen, onClose, onArticleCreated }) {
   const [title, setTitle] = useState('');
@@ -27,7 +28,7 @@ export default function ArticleEditorModal({ isOpen, onClose, onArticleCreated }
     };
 
     try {
-      const res = await fetch('http://localhost:5000/api/articles', {
+      const res = await fetch(`${API_URL}/api/articles`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newArticle)

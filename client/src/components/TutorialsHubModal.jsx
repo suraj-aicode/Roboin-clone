@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/slices/cartSlice';
 import { BookOpen, Code2, Cpu, ArrowRight, Eye, Tag, CheckCircle2 } from 'lucide-react';
+import { API_URL } from '../config/api';
 
 export default function TutorialsHubModal({ isOpen, onClose }) {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function TutorialsHubModal({ isOpen, onClose }) {
 
   useEffect(() => {
     if (isOpen) {
-      fetch('http://localhost:5000/api/articles')
+      fetch(`${API_URL}/api/articles`)
         .then(res => res.json())
         .then(data => {
           if (data.success && data.data) {

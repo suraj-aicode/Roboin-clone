@@ -5,6 +5,7 @@ import { updateOrderStatusLocal } from '../redux/slices/orderSlice';
 import { updateTicketStatus, updateRFQStatus, updateReturnStatus } from '../redux/slices/communitySlice';
 import AnalyticsBI from './AnalyticsBI';
 import ArticleEditorModal from './ArticleEditorModal';
+import { API_URL } from '../config/api';
 import { 
   BarChart3, 
   Package, 
@@ -354,7 +355,7 @@ export default function AdminDashboard() {
   const handleToggleCoupon = async (id) => {
     setCoupons(prev => prev.map(c => c._id === id ? { ...c, isActive: !c.isActive } : c));
     try {
-      await fetch(`http://localhost:5000/api/coupons/${id}/toggle`, { method: 'PATCH' });
+      await fetch(`${API_URL}/api/coupons/${id}/toggle`, { method: 'PATCH' });
     } catch {}
   };
 
@@ -377,7 +378,7 @@ export default function AdminDashboard() {
       };
       setCoupons(prev => [newC, ...prev]);
       try {
-        fetch('http://localhost:5000/api/coupons', {
+        fetch(`${API_URL}/api/coupons`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newC)
@@ -419,7 +420,7 @@ export default function AdminDashboard() {
 
         // Attempt server update
         try {
-          await fetch(`http://localhost:5000/api/products/${product._id}/stock`, {
+          await fetch(`${API_URL}/api/products/${product._id}/stock`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ stockOnHand: val, reason })
@@ -445,7 +446,7 @@ export default function AdminDashboard() {
     }, ...prev]);
 
     try {
-      await fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+      await fetch(`${API_URL}/api/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })
