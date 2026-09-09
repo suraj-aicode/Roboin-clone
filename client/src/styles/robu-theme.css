@@ -1,0 +1,226 @@
+/* ==========================================================================
+   ROBU.IN Official Design System Tokens & Global Styles
+   Extracted directly from https://robu.in/ live e-commerce platform
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Brand Primary Colors */
+  --robu-primary-orange: #EF4123;
+  --robu-orange-hover: #D73317;
+  --robu-orange-light: #FFF2EE;
+  
+  /* Accent Deep Purple / Indigo (Buttons, Search Button, Badges) */
+  --robu-purple: #3B0187;
+  --robu-purple-hover: #2A0063;
+  --robu-purple-light: #ECE4F8;
+
+  /* Background Colors */
+  --robu-bg-top: #EBF1FA;
+  --robu-bg-body: #F4F6F9;
+  --robu-bg-card: #FFFFFF;
+  --robu-bg-footer: #EEF2F8;
+  --robu-bg-input: #FFFFFF;
+
+  /* Service Category Pastel Tints */
+  --robu-service-pcb: #FDE8E0;
+  --robu-service-3d: #ECE4F8;
+  --robu-service-laser: #D8F3EC;
+  --robu-service-battery: #D0F0F7;
+
+  /* Text & Typography */
+  --robu-text-heading: #0F172A;
+  --robu-text-dark: #1E293B;
+  --robu-text-body: #334155;
+  --robu-text-muted: #64748B;
+  --robu-text-light: #94A3B8;
+
+  /* Borders & Dividers */
+  --robu-border: #E2E8F0;
+  --robu-border-light: #EDF2F7;
+  --robu-border-focus: #3B0187;
+
+  /* Elevation Shadows */
+  --robu-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --robu-shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --robu-shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.12);
+  --robu-shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
+
+  /* Fonts */
+  --font-robu-heading: 'Outfit', sans-serif;
+  --font-robu-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Layout Dimensions */
+  --robu-max-width: 1320px;
+  --robu-radius-sm: 6px;
+  --robu-radius-md: 10px;
+  --robu-radius-lg: 14px;
+  --robu-radius-xl: 20px;
+  --robu-radius-pill: 9999px;
+
+  /* Transition Curves */
+  --robu-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-robu-body);
+  background-color: var(--robu-bg-body);
+  color: var(--robu-text-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-robu-heading);
+  color: var(--robu-text-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--robu-transition);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  transition: var(--robu-transition);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.robu-container {
+  max-width: var(--robu-max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .robu-container {
+    padding: 0 24px;
+  }
+}
+
+/* Section Common Styles */
+.robu-section {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.robu-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.robu-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--robu-text-heading);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .robu-section-title {
+    font-size: 26px;
+  }
+}
+
+.robu-view-all-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--robu-purple);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.robu-view-all-link:hover {
+  color: var(--robu-primary-orange);
+}
+
+/* Card Lift Animation */
+.robu-card-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.robu-card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--robu-shadow-hover);
+}
+
+/* Buttons */
+.robu-btn-primary {
+  background-color: var(--robu-purple);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: var(--robu-radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.robu-btn-primary:hover {
+  background-color: var(--robu-purple-hover);
+}
+
+.robu-btn-orange {
+  background-color: var(--robu-primary-orange);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: var(--robu-radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.robu-btn-orange:hover {
+  background-color: var(--robu-orange-hover);
+}
+
+/* Continuous Brand Marquee */
+@keyframes robuMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.robu-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: robuMarquee 28s linear infinite;
+}
+
+.robu-marquee-track:hover {
+  animation-play-state: paused;
+}

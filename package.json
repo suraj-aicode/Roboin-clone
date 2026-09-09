@@ -1,0 +1,14 @@
+{
+  "name": "new-robo-in",
+  "version": "1.0.0",
+  "description": "Robotics & Electronics Commerce Platform (Inspired by SRS Specifications)",
+  "scripts": {
+    "client": "npm --prefix client run dev",
+    "server": "npm --prefix server start",
+    "seed": "npm --prefix server run seed",
+    "build": "npm --prefix client run build"
+  },
+  "keywords": ["robotics", "electronics", "ecommerce", "gst", "razorpay"],
+  "author": "RoboTech",
+  "license": "ISC"
+}
