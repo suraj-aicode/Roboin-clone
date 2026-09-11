@@ -72,14 +72,16 @@ export async function createRazorpayOrder({ amount, currency = 'INR', receipt, n
 /**
  * Verify cryptographic payment signature with backend
  */
-export async function verifyPaymentSignature({ razorpay_order_id, razorpay_payment_id, razorpay_signature }) {
+export async function verifyPaymentSignature({ razorpay_order_id, razorpay_payment_id, razorpay_signature, orderNumber, orderId }) {
   const res = await fetch(`${API_BASE}/verify`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       razorpay_order_id,
       razorpay_payment_id,
-      razorpay_signature
+      razorpay_signature,
+      orderNumber,
+      orderId
     })
   });
 
@@ -90,6 +92,34 @@ export async function verifyPaymentSignature({ razorpay_order_id, razorpay_payme
 
   return data;
 }
+
+/**
+ * Fetch Payment History (Reference: get_payments.php)
+ */
+export async function fetchPaymentHistory(email) {
+  try {
+    const url = email ? `${API_BASE}/history?email=${encodeURIComponent(email)}` : `${API_BASE}/history`;
+    const res = await fetch(url);
+    return await res.json();
+  } catch (err) {
+    console.warn('[Razorpay] Failed fetching payment history:', err);
+    return { success: false, data: [] };
+  }
+}
+
+/**
+ * Fetch Order Tax Invoice details (Reference: download_invoice.php)
+ */
+export async function fetchOrderInvoice(orderId) {
+  try {
+    const res = await fetch(`${API_BASE}/invoice/${orderId}`);
+    return await res.json();
+  } catch (err) {
+    console.warn('[Razorpay] Failed fetching order invoice:', err);
+    return { success: false, message: err.message };
+  }
+}
+
 
 /**
  * Launch Real Official Razorpay Checkout Popup

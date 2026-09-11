@@ -4,7 +4,9 @@
   "description": "Robotics & Electronics Commerce Platform (Inspired by SRS Specifications)",
   "scripts": {
     "client": "npm --prefix client run dev",
+    "dev": "npm --prefix client run dev",
     "server": "npm --prefix server start",
+    "start": "npm --prefix server start",
     "seed": "npm --prefix server run seed",
     "build": "npm --prefix client run build"
   },

@@ -43,10 +43,10 @@ export default function RazorpayModal({
 
   // Card Form state
   const [cardData, setCardData] = useState({
-    number: '4532 •••• •••• 8821',
+    number: '4012 0000 0000 0002',
     name: customer.name || 'Satya Prakash',
     expiry: '12/28',
-    cvv: '821'
+    cvv: '123'
   });
 
   // Netbanking state
