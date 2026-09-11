@@ -202,8 +202,8 @@ export default function CheckoutModal() {
 
       const orderPayload = orderRes.order;
 
-      // If user specifically picked Sandbox OR if placeholder keys are in use, launch Interactive Razorpay Modal
-      const isSimulatedMode = formData.paymentMethod.includes('Sandbox') || (!keyInfo.keyId || keyInfo.keyId.includes('placeholder'));
+      // Only launch Interactive Modal if user explicitly selected Sandbox
+      const isSimulatedMode = formData.paymentMethod.includes('Sandbox');
 
       if (isSimulatedMode) {
         setModalOrderData({
@@ -221,9 +221,9 @@ export default function CheckoutModal() {
         return;
       }
 
-      // Launch Real Razorpay Standard Checkout Modal
+      // Launch Real Official Razorpay Standard Checkout Popup (checkout.js)
       await openRealRazorpayCheckout({
-        keyId: keyInfo.keyId,
+        keyId: keyInfo.keyId || 'rzp_test_TamQcFg4TewJBR',
         order: orderPayload,
         amount: grandTotal,
         customer: {
