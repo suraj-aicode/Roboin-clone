@@ -772,7 +772,7 @@ export default function CategoryPage({ categorySlug }) {
         }}>
           <Sparkles size={18} color="var(--robu-primary-orange)" style={{ flexShrink: 0 }} />
           <span>
-            Need industrial volume discounts or customized manufacturing for {categoryMeta.title}? Contact our Macfos B2B engineering team for HSN quotation and tax invoice credit.
+            Need industrial volume discounts or customized manufacturing for {categoryMeta.title}? Contact our VoltCart B2B engineering team for HSN quotation and tax invoice credit.
           </span>
         </div>
       </div>

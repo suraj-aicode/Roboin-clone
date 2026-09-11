@@ -3,7 +3,7 @@ node_modules/
 client/node_modules/
 server/node_modules/
 vendor/
-payment/vendor/
+docs/legacy-php-reference/payment/vendor/
 
 
 # Production builds

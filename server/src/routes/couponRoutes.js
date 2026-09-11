@@ -5,6 +5,19 @@ const Coupon = require('../models/Coupon');
 // In-memory fallback baseline coupons if DB is not connected
 const FALLBACK_COUPONS = [
   {
+    _id: 'cpn-000',
+    code: 'VOLT10',
+    discountType: 'percentage',
+    value: 0.10,
+    minOrderAmount: 500,
+    maxDiscount: 1000,
+    maxUses: 500,
+    usedCount: 15,
+    validUntil: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
+    isActive: true,
+    description: '10% off on all VoltCart Robotics & Electronics boards above ₹500'
+  },
+  {
     _id: 'cpn-001',
     code: 'ROBO10',
     discountType: 'percentage',

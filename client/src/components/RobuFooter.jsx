@@ -56,7 +56,7 @@ export default function RobuFooter() {
               color: 'var(--robu-text-heading)',
               marginBottom: '4px'
             }}>
-              Join Robu Maker Club Newsletter
+              Join VoltCart Maker Club Newsletter
             </h3>
             <p style={{ fontSize: '13.5px', color: 'var(--robu-text-muted)' }}>
               Get weekly robotics tutorials, coupon drops, and new board launch alerts.
@@ -76,7 +76,7 @@ export default function RobuFooter() {
               borderRadius: '8px'
             }}>
               <CheckCircle2 size={18} />
-              <span>Thank you! Welcome to the Robu Maker Club.</span>
+              <span>Thank you! Welcome to the VoltCart Maker Club.</span>
             </div>
           ) : (
             <form 
@@ -154,24 +154,24 @@ export default function RobuFooter() {
               <div style={{
                 width: '32px',
                 height: '32px',
-                backgroundColor: 'var(--robu-primary-orange)',
+                background: 'linear-gradient(135deg, var(--robu-primary-orange) 0%, #EA580C 100%)',
                 borderRadius: '6px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#FFFFFF',
                 fontWeight: 800,
-                fontSize: '18px'
+                fontSize: '16px'
               }}>
-                r
+                ⚡
               </div>
               <span style={{ fontWeight: 800, fontSize: '20px', color: 'var(--robu-text-heading)' }}>
-                ROBU<span style={{ color: 'var(--robu-primary-orange)' }}>.IN</span>
+                VOLT<span style={{ color: 'var(--robu-primary-orange)' }}>CART</span>
               </span>
             </div>
 
             <p style={{ fontSize: '13px', color: 'var(--robu-text-muted)', lineHeight: '1.5', marginBottom: '16px' }}>
-              India's leading online marketplace for DIY electronics, robotics, 3D printers, sensors, and mechanical components.
+              India's premier online marketplace for DIY electronics, robotics, 3D printers, sensors, and mechanical components.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px', color: 'var(--robu-text-body)' }}>
@@ -181,11 +181,11 @@ export default function RobuFooter() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Mail size={15} color="var(--robu-purple)" />
-                <span>support@robu.in</span>
+                <span>support@voltcart.in</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                 <MapPin size={15} color="var(--robu-text-muted)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                <span>Macfos Limited, S. No. 34, Katraj-Dehu Road, Pune, Maharashtra 411046</span>
+                <span>VoltCart Technologies, S. No. 34, Katraj-Dehu Road, Pune, Maharashtra 411046</span>
               </div>
             </div>
 
@@ -230,12 +230,12 @@ export default function RobuFooter() {
               Information
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: 'var(--robu-text-muted)' }}>
-              <li><a href="#about" style={{ hover: { color: 'var(--robu-primary-orange)' } }}>About Robu.in</a></li>
+              <li><a href="#about" style={{ hover: { color: 'var(--robu-primary-orange)' } }}>About VoltCart</a></li>
               <li><a href="#contact">Contact Us</a></li>
               <li><a href="#bulk">Bulk & RFQ Enquiry</a></li>
-              <li><a href="#careers">Careers @ Macfos</a></li>
-              <li><a href="#sell">Sell on Robu</a></li>
-              <li><a href="#lab">Robu Tech Lab</a></li>
+              <li><a href="#careers">Careers @ VoltCart</a></li>
+              <li><a href="#sell">Sell on VoltCart</a></li>
+              <li><a href="#lab">VoltCart Tech Lab</a></li>
               <li><a href="#bom">BOM Tool Upload</a></li>
             </ul>
           </div>
@@ -304,7 +304,7 @@ export default function RobuFooter() {
           gap: '12px'
         }}>
           <div>
-            © 2026 Macfos Limited (Robu.in). All rights reserved. Registered under Indian Companies Act.
+            © 2026 VoltCart Technologies Pvt Ltd. All rights reserved. Registered under Indian Companies Act.
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>

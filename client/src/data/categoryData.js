@@ -1,4 +1,4 @@
-// Comprehensive data and technical catalog for Robu.in 7 core categories
+// Comprehensive data and technical catalog for VoltCart 12 core categories
 import { 
   Compass, 
   BatteryCharging, 
@@ -179,7 +179,7 @@ export const CATEGORIES_METADATA = {
     tagline: 'High-Discharge LiPo, 18650/21700 Cells, Smart BMS & SMPS Units',
     icon: BatteryCharging,
     color: '#10B981',
-    description: 'Robu.in provides industry-trusted power solutions for mobile robots, drones, EV powertrains, and lab benches. Browse our certified lithium-ion cells, multi-cell high-discharge LiPo packs, smart battery balance chargers, and heavy-duty Mean Well switching power supplies.',
+    description: 'VoltCart provides industry-trusted power solutions for mobile robots, drones, EV powertrains, and lab benches. Browse our certified lithium-ion cells, multi-cell high-discharge LiPo packs, smart battery balance chargers, and heavy-duty Mean Well switching power supplies.',
     subcategories: [
       'LiPo Drone Batteries (1S - 6S)',
       '18650 & 21700 Lithium-Ion Cells',
@@ -315,7 +315,7 @@ export const CATEGORIES_METADATA = {
     tagline: 'High-Speed FDM, Resin SLA Printers, Filaments & Upgrade Components',
     icon: Printer,
     color: '#8B5CF6',
-    description: 'Transform your CAD designs into physical reality with Robu.in 3D printing ecosystem. Authorized distributor for Bambu Lab, Creality, and eSUN. Browse high-speed CoreXY 3D printers, all-metal hotends, hardened steel nozzles, PEI textured beds, and premium engineering filaments.',
+    description: 'Transform your CAD designs into physical reality with VoltCart 3D printing ecosystem. Authorized distributor for Bambu Lab, Creality, and eSUN. Browse high-speed CoreXY 3D printers, all-metal hotends, hardened steel nozzles, PEI textured beds, and premium engineering filaments.',
     subcategories: [
       'Desktop 3D Printers (FDM / SLA)',
       'Filaments (PLA+, PETG, ABS, TPU, Carbon)',
@@ -429,7 +429,7 @@ export const CATEGORIES_METADATA = {
     tagline: 'Ultrasonic, IMU Gyroscopes, Gas, Environmental, Temperature & Load Cells',
     icon: Radio,
     color: '#06B6D4',
-    description: 'Interface your microcontroller with the physical world. Robu.in provides India’s largest inventory of analog and I2C/SPI digital sensors: ultrasonic distance finders, 6-axis and 9-axis motion IMUs, medical heart rate monitors, MQ-series gas sensors, and industrial load cells.',
+    description: 'Interface your microcontroller with the physical world. VoltCart provides India’s largest inventory of analog and I2C/SPI digital sensors: ultrasonic distance finders, 6-axis and 9-axis motion IMUs, medical heart rate monitors, MQ-series gas sensors, and industrial load cells.',
     subcategories: [
       'Distance & Proximity Sensors (LIDAR / Ultrasonic / IR)',
       'Motion, Gyro & Accelerometers (MPU6050 / BNO055)',
@@ -929,7 +929,7 @@ export const CATEGORIES_METADATA = {
     tagline: 'Official Arduino, Raspberry Pi, ESP32, STM32 & ARM Cortex Boards',
     icon: Cpu,
     color: '#EF4123',
-    description: 'Empower your embedded hardware prototypes with world-class development boards. Robu.in is an authorized source for official Arduino microcontrollers, Raspberry Pi single-board computers, Espressif dual-core Wi-Fi/BLE modules, STM32 ARM Cortex evaluation kits, and high-performance RP2040 microcontrollers.',
+    description: 'Empower your embedded hardware prototypes with world-class development boards. VoltCart is an authorized source for official Arduino microcontrollers, Raspberry Pi single-board computers, Espressif dual-core Wi-Fi/BLE modules, STM32 ARM Cortex evaluation kits, and high-performance RP2040 microcontrollers.',
     subcategories: [
       'Arduino Official & Compatible Boards',
       'Raspberry Pi Single Board Computers (SBC)',

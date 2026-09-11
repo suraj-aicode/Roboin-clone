@@ -146,7 +146,7 @@ export async function openRealRazorpayCheckout({
     key: keyId,
     amount: order?.amount || Math.round(Number(amount) * 100),
     currency: order?.currency || 'INR',
-    name: 'Robu.in Robotics',
+    name: 'VoltCart Robotics',
     description: 'Hardware Components & Development Kits',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=200&q=80',
     handler: async function (response) {

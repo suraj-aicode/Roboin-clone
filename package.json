@@ -1,7 +1,7 @@
 {
-  "name": "new-robo-in",
+  "name": "volt-cart",
   "version": "1.0.0",
-  "description": "Robotics & Electronics Commerce Platform (Inspired by SRS Specifications)",
+  "description": "VoltCart - Enterprise Full-Stack Robotics & Electronics E-Commerce Platform",
   "scripts": {
     "client": "npm --prefix client run dev",
     "dev": "npm --prefix client run dev",
@@ -10,7 +10,7 @@
     "seed": "npm --prefix server run seed",
     "build": "npm --prefix client run build"
   },
-  "keywords": ["robotics", "electronics", "ecommerce", "gst", "razorpay"],
-  "author": "RoboTech",
+  "keywords": ["robotics", "electronics", "ecommerce", "gst", "razorpay", "volt-cart"],
+  "author": "VoltCart",
   "license": "ISC"
 }

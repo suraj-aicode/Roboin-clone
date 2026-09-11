@@ -114,16 +114,16 @@ export default function HeaderMain() {
             flexShrink: 0
           }}
         >
-          {/* Robu.in official logo styling: Orange rounded box with lowercase 'r', bold navy ROBU.IN */}
+          {/* VoltCart official brand logo */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '6px'
+            gap: '8px'
           }}>
             <div style={{
               width: '38px',
               height: '38px',
-              backgroundColor: 'var(--robu-primary-orange)',
+              background: 'linear-gradient(135deg, var(--robu-primary-orange) 0%, #EA580C 100%)',
               borderRadius: '8px',
               display: 'flex',
               alignItems: 'center',
@@ -131,31 +131,31 @@ export default function HeaderMain() {
               color: '#FFFFFF',
               fontFamily: 'var(--font-robu-heading)',
               fontWeight: 800,
-              fontSize: '24px',
-              boxShadow: '0 2px 8px rgba(239, 65, 35, 0.3)'
+              fontSize: '20px',
+              boxShadow: '0 2px 8px rgba(239, 65, 35, 0.35)'
             }}>
-              r
+              ⚡
             </div>
             <div>
               <div style={{
                 fontFamily: 'var(--font-robu-heading)',
                 fontWeight: 800,
-                fontSize: '24px',
+                fontSize: '23px',
                 lineHeight: 1,
                 color: 'var(--robu-text-heading)',
                 letterSpacing: '-0.5px'
               }}>
-                ROBU<span style={{ color: 'var(--robu-primary-orange)' }}>.IN</span>
+                VOLT<span style={{ color: 'var(--robu-primary-orange)' }}>CART</span>
               </div>
               <div style={{
                 fontSize: '9.5px',
                 fontWeight: 600,
                 color: 'var(--robu-text-muted)',
-                letterSpacing: '0.4px',
+                letterSpacing: '0.5px',
                 marginTop: '2px',
                 textTransform: 'uppercase'
               }}>
-                Your Ideas, Our Parts
+                Robotics & Electronics
               </div>
             </div>
           </div>

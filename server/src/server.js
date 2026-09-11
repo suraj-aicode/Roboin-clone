@@ -30,7 +30,7 @@ app.use('/api/shipping', require('./routes/shippingRoutes'));
 app.get('/', (req, res) => {
   res.status(200).json({
     status: 'online',
-    service: 'RoboTech Commerce API Server',
+    service: 'VoltCart Commerce API Server',
     message: 'Backend is running successfully on Render! Use this URL in Netlify as VITE_API_URL.',
     health: '/api/health',
     timestamp: new Date().toISOString()
@@ -42,7 +42,7 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'online',
     timestamp: new Date().toISOString(),
-    service: 'Robotics & Electronics Commerce Platform API v1.0',
+    service: 'VoltCart Robotics & Electronics Platform API v1.0',
     compliance: 'India GST, Razorpay & RBAC Compliant'
   });
 });

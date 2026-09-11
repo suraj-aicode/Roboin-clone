@@ -33,7 +33,7 @@ exports.getRazorpayKey = async (req, res) => {
       success: true,
       keyId: KEY_ID,
       isPlaceholder,
-      merchantName: 'RoboTech Components Pvt Ltd',
+      merchantName: 'VoltCart Technologies Pvt Ltd',
       currency: 'INR'
     });
   } catch (error) {
@@ -367,11 +367,11 @@ exports.getOrderInvoice = async (req, res) => {
       orderNumber: order.orderNumber,
       date: order.createdAt,
       company: {
-        name: 'RoboTech Components Pvt Ltd',
+        name: 'VoltCart Technologies Pvt Ltd',
         gstin: '29AAACR9981K1Z3',
         address: 'Plot 12, Industrial Tech Hub, Electronic City, Bengaluru, Karnataka 560100',
-        email: 'billing@robo.in',
-        support: '+91 80 4040 5050'
+        email: 'billing@voltcart.in',
+        support: '1800 266 6123'
       },
       customer: {
         name: order.customerName,

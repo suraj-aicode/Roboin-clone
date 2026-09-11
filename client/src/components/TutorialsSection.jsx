@@ -176,7 +176,7 @@ export default function TutorialsSection() {
                 fontSize: '12px',
                 color: 'var(--robu-text-muted)'
               }}>
-                <span>Robu Tech Lab</span>
+                <span>VoltCart Tech Lab</span>
                 <span>{video.views}</span>
               </div>
             </div>
