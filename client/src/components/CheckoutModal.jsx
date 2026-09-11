@@ -290,7 +290,7 @@ export default function CheckoutModal() {
                 <span>• CVV: <code>123</code></span>
               </div>
               <div style={{ color: '#0369A1', fontSize: '0.74rem' }}>
-                💡 Or select <strong>Razorpay Interactive Sandbox</strong> from the dropdown below to test card checkout without Razorpay account limitations!
+                💡 Or test via UPI / QR directly inside the official Razorpay popup!
               </div>
             </div>
           )}
