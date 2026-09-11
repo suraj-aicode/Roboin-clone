@@ -5,7 +5,6 @@ import { clearCart } from '../redux/slices/cartSlice';
 import { addNotification } from '../redux/slices/notificationSlice';
 import { ShieldCheck, CreditCard, Lock, Sparkles, Settings, ExternalLink } from 'lucide-react';
 import RazorpayConfigModal from './RazorpayConfigModal';
-import RazorpayModal from './RazorpayModal';
 import { 
   getRazorpayKey, 
   createRazorpayOrder, 
@@ -33,8 +32,6 @@ export default function CheckoutModal() {
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [razorpayConfigOpen, setRazorpayConfigOpen] = useState(false);
-  const [customModalOpen, setCustomModalOpen] = useState(false);
-  const [modalOrderData, setModalOrderData] = useState(null);
   const [currentKeyId, setCurrentKeyId] = useState('');
   const [isPlaceholderKey, setIsPlaceholderKey] = useState(true);
 
@@ -202,25 +199,6 @@ export default function CheckoutModal() {
 
       const orderPayload = orderRes.order;
 
-      // Only launch Interactive Modal if user explicitly selected Sandbox
-      const isSimulatedMode = formData.paymentMethod.includes('Sandbox');
-
-      if (isSimulatedMode) {
-        setModalOrderData({
-          orderId: orderPayload?.id || `order_${Date.now()}`,
-          amount: grandTotal,
-          customer: {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone
-          },
-          receipt: orderPayload?.receipt || `rec_${Date.now()}`
-        });
-        setIsProcessing(false);
-        setCustomModalOpen(true);
-        return;
-      }
-
       // Launch Real Official Razorpay Standard Checkout Popup (checkout.js)
       await openRealRazorpayCheckout({
         keyId: keyInfo.keyId || 'rzp_test_TamQcFg4TewJBR',
@@ -235,28 +213,7 @@ export default function CheckoutModal() {
           await finalizeOrder(paymentData);
         },
         onFailure: (errMsg) => {
-          if (errMsg && (errMsg.toLowerCase().includes('international') || errMsg.toLowerCase().includes('card') || errMsg.toLowerCase().includes('not supported'))) {
-            const useSandbox = window.confirm(
-              `Razorpay Account Notice: Cards are restricted by your Razorpay merchant settings ("${errMsg}").\n\n💡 Tip: You can test via UPI in the popup, or click OK to complete the card test using the Interactive Sandbox Simulator.`
-            );
-            if (useSandbox) {
-              setModalOrderData({
-                orderId: orderPayload?.id || `order_${Date.now()}`,
-                amount: grandTotal,
-                customer: {
-                  name: formData.name,
-                  email: formData.email,
-                  phone: formData.phone
-                },
-                receipt: orderPayload?.receipt || `rec_${Date.now()}`
-              });
-              setIsProcessing(false);
-              setCustomModalOpen(true);
-              return;
-            }
-          } else {
-            alert(`Razorpay Payment Notice: ${errMsg}`);
-          }
+          console.warn('[Razorpay Payment Failed]', errMsg);
           setIsProcessing(false);
         },
         onDismiss: () => {
@@ -265,19 +222,8 @@ export default function CheckoutModal() {
       });
     } catch (err) {
       console.error('[Razorpay Error]', err);
-      // Seamless fallback to Interactive Razorpay Modal if network/API fails
-      setModalOrderData({
-        orderId: `order_${Date.now()}`,
-        amount: grandTotal,
-        customer: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone
-        },
-        receipt: `rec_${Date.now()}`
-      });
+      alert(`Razorpay Payment Notice: ${err.message || 'Payment initiation failed.'}`);
       setIsProcessing(false);
-      setCustomModalOpen(true);
     }
   };
 
@@ -461,9 +407,6 @@ export default function CheckoutModal() {
                   <option value="Razorpay Real Checkout (UPI, Cards, Netbanking)">
                     Razorpay Standard Checkout (Official Popup — UPI, Cards, Netbanking)
                   </option>
-                  <option value="Razorpay Sandbox (Interactive UPI QR, Cards & NetBanking)">
-                    Razorpay Interactive Sandbox (Simulated QR, Cards, Netbanking & Wallets)
-                  </option>
                   <option value="Cash on Delivery (COD)">
                     Cash on Delivery (COD) — Pay upon delivery
                   </option>
@@ -529,24 +472,6 @@ export default function CheckoutModal() {
           </form>
         </div>
       </div>
-
-      {/* Razorpay Interactive Sandbox Checkout Modal */}
-      <RazorpayModal
-        isOpen={customModalOpen}
-        onClose={() => {
-          setCustomModalOpen(false);
-          setIsProcessing(false);
-        }}
-        orderDetails={modalOrderData}
-        onPaymentSuccess={async (paymentData) => {
-          setCustomModalOpen(false);
-          await finalizeOrder(paymentData);
-        }}
-        onPaymentFailure={(errMsg) => {
-          alert(`Payment Failed: ${errMsg}`);
-          setIsProcessing(false);
-        }}
-      />
 
       {/* Razorpay API Key Configuration Dialog */}
       <RazorpayConfigModal
