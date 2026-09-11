@@ -20,6 +20,7 @@ import BlogSection from './components/BlogSection';
 import RobuFooter from './components/RobuFooter';
 import RecentlyViewedTray from './components/RecentlyViewedTray';
 import CategoryPage from './components/CategoryPage';
+import { CATEGORIES_METADATA, ALL_CATALOG_PRODUCTS } from './data/categoryData';
 
 // Functional Modals & Drawers
 import ProductDetailModal from './components/ProductDetailModal';
@@ -200,7 +201,7 @@ export default function App() {
   }, [isAdminUser, adminView, dispatch]);
 
   const [sortOption, setSortOption] = useState('default');
-  const [selectedBrands, setSelectedBrands] = useState(['Arduino', 'Raspberry Pi Foundation', 'Espressif Systems', 'STMicroelectronics', 'SparkFun', 'Adafruit']);
+  const [selectedBrands, setSelectedBrands] = useState([]);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [selectedVoltage, setSelectedVoltage] = useState('all');
 
@@ -213,7 +214,7 @@ export default function App() {
         if (data.success && data.data && data.data.length > 0) {
           dispatch(setProducts(data.data));
         } else {
-          dispatch(setProducts(FALLBACK_PRODUCTS));
+          dispatch(setProducts(ALL_CATALOG_PRODUCTS.length > 0 ? ALL_CATALOG_PRODUCTS : FALLBACK_PRODUCTS));
         }
 
         const orderRes = await fetch(`${API_URL}/api/orders`);
@@ -223,7 +224,7 @@ export default function App() {
         }
       } catch (err) {
         console.warn('Backend offline or connecting; utilizing local state baseline', err);
-        dispatch(setProducts(FALLBACK_PRODUCTS));
+        dispatch(setProducts(ALL_CATALOG_PRODUCTS.length > 0 ? ALL_CATALOG_PRODUCTS : FALLBACK_PRODUCTS));
       }
     };
 
@@ -277,15 +278,7 @@ export default function App() {
     );
   };
 
-  const isDedicatedCategoryPage = [
-    'drone-parts', 
-    'power-batteries', 
-    '3d-printers', 
-    'sensors', 
-    'electronic-components', 
-    'motors-drivers', 
-    'electronic-modules'
-  ].includes(activeCategory);
+  const isDedicatedCategoryPage = Boolean(CATEGORIES_METADATA[activeCategory]);
 
   return (
     <div style={{ backgroundColor: 'var(--robu-bg-body)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

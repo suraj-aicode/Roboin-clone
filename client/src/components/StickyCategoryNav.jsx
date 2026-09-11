@@ -14,21 +14,25 @@ import {
   Bot, 
   Compass, 
   Store,
-  X
+  X,
+  Tv,
+  Wifi,
+  Wrench
 } from 'lucide-react';
 
 export const ROBU_TOP_CATEGORIES = [
+  { id: 'development-boards', name: 'Development Boards', slug: 'microcontrollers', icon: Cpu },
   { id: 'drone-parts', name: 'Drone Parts', slug: 'drone-parts', icon: Compass },
   { id: 'batteries-power', name: 'Batteries & Power Supply', slug: 'power-batteries', icon: BatteryCharging },
   { id: '3d-printers-parts', name: '3D Printers & Parts', slug: '3d-printers', icon: Printer },
-  { id: 'sensors', name: 'Sensors', slug: 'sensors', icon: Radio },
+  { id: 'sensors', name: 'Sensors & Modules', slug: 'sensors', icon: Radio },
   { id: 'electronic-components', name: 'Electronic Components', slug: 'electronic-components', icon: Zap },
-  { id: 'motors-drivers', name: 'Motors/Drivers/Actuators', slug: 'motors-drivers', icon: Bot },
-  { id: 'electronic-modules', name: 'Electronic Modules', slug: 'electronic-modules', icon: Cpu },
-  { id: 'development-boards', name: 'Development Boards', slug: 'microcontrollers', icon: Cpu },
-  { id: 'iot-wireless', name: 'IoT & Wireless', slug: 'iot-wireless', icon: Radio },
+  { id: 'motors-drivers', name: 'Motors & Drivers', slug: 'motors-drivers', icon: Bot },
+  { id: 'electronic-modules', name: 'Electronic Modules', slug: 'electronic-modules', icon: Tv },
+  { id: 'iot-wireless', name: 'IoT & Wireless', slug: 'iot-wireless', icon: Wifi },
   { id: 'diy-kits', name: 'DIY & Maker Kits', slug: 'diy-kits', icon: Flame },
-  { id: 'ev-parts', name: 'Electric Vehicle Parts', slug: 'ev-parts', icon: Car }
+  { id: 'ev-parts', name: 'Electric Vehicle Parts', slug: 'ev-parts', icon: Car },
+  { id: 'tools', name: 'Tools & Instruments', slug: 'tools', icon: Wrench }
 ];
 
 export default function StickyCategoryNav() {
