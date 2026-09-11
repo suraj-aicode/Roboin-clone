@@ -26,6 +26,17 @@ app.use('/api/articles', require('./routes/articleRoutes'));
 app.use('/api/coupons', require('./routes/couponRoutes'));
 app.use('/api/shipping', require('./routes/shippingRoutes'));
 
+// Root API status endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 'online',
+    service: 'RoboTech Commerce API Server',
+    message: 'Backend is running successfully on Render! Use this URL in Netlify as VITE_API_URL.',
+    health: '/api/health',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
