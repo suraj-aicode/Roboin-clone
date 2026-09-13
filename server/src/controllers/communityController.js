@@ -3,6 +3,7 @@ const Ticket = require('../models/Ticket');
 const RFQ = require('../models/RFQ');
 const ReturnRequest = require('../models/ReturnRequest');
 const AuditLog = require('../models/AuditLog');
+const { sendTicketEmail } = require('../utils/sendEmail');
 
 // @desc Get reviews for a product SKU
 exports.getReviews = async (req, res) => {
@@ -102,6 +103,18 @@ exports.createTicket = async (req, res) => {
       relatedOrderNumber,
       status: 'Open'
     });
+
+    // Send email notification (non-blocking)
+    sendTicketEmail({
+      ticketId,
+      customerName,
+      customerEmail,
+      phone,
+      category,
+      subject,
+      description,
+      relatedOrderNumber
+    }).catch(err => console.warn('[Email Dispatch Error]', err.message));
 
     res.status(201).json({ success: true, data: ticket });
   } catch (error) {
