@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, Zap, Award, Sparkles } from 'lucide-react';
 
 const HERO_SLIDES = [
@@ -10,6 +11,7 @@ const HERO_SLIDES = [
     badge: 'Official Distributor Stock',
     price: '₹7,999',
     buttonText: 'Order Raspberry Pi 5',
+    targetUrl: '/product/prod-002',
     bgGradient: 'linear-gradient(135deg, #1E1B4B 0%, #3B0187 60%, #4C1D95 100%)',
     accentColor: '#EF4123',
     image: '/assets/images/raspberry_pi_5.jpg',
@@ -23,6 +25,7 @@ const HERO_SLIDES = [
     badge: '100% Genuine Arduino',
     price: '₹2,499',
     buttonText: 'Buy Arduino UNO R4',
+    targetUrl: '/product/prod-001',
     bgGradient: 'linear-gradient(135deg, #0F172A 0%, #0369A1 50%, #0284C7 100%)',
     accentColor: '#F59E0B',
     image: '/assets/images/arduino_uno_r4.jpg',
@@ -36,6 +39,7 @@ const HERO_SLIDES = [
     badge: 'Same Day Dispatch',
     price: 'Custom Quotation',
     buttonText: 'Calculate Custom Quote',
+    targetUrl: '/b2b-quote',
     bgGradient: 'linear-gradient(135deg, #18181B 0%, #1F2937 50%, #EF4123 100%)',
     accentColor: '#10B981',
     image: '/assets/images/esp32_dev_board.jpg',
@@ -43,7 +47,45 @@ const HERO_SLIDES = [
   }
 ];
 
+import { Cpu, Printer, Scissors, BatteryCharging } from 'lucide-react';
+
+const QUICK_SERVICES = [
+  {
+    id: 'pcb',
+    title: 'PCB Manufacturing',
+    subtitle: 'High Precision Quick-Turn',
+    icon: Cpu,
+    color: '#10B981',
+    link: '/b2b-quote'
+  },
+  {
+    id: '3d-printing',
+    title: '3D Printing Service',
+    subtitle: 'FDM, SLA & Industrial SLS',
+    icon: Printer,
+    color: '#3B82F6',
+    link: '/b2b-quote'
+  },
+  {
+    id: 'laser-cutting',
+    title: 'Laser Cutting',
+    subtitle: 'Custom Acrylic & Sheet Metal',
+    icon: Scissors,
+    color: '#F59E0B',
+    link: '/b2b-quote'
+  },
+  {
+    id: 'battery-pack',
+    title: 'Custom Battery Pack',
+    subtitle: 'Lithium-ion & BMS Packs',
+    icon: BatteryCharging,
+    color: '#EF4444',
+    link: '/b2b-quote'
+  }
+];
+
 export default function HeroCarousel() {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef(null);
@@ -76,24 +118,104 @@ export default function HeroCarousel() {
   return (
     <div 
       className="robu-container"
-      style={{ marginTop: '18px', marginBottom: '24px' }}
+      style={{ marginTop: '16px', marginBottom: '24px' }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <div style={{
-        position: 'relative',
-        borderRadius: '16px',
-        overflow: 'hidden',
-        boxShadow: '0 8px 30px rgba(15, 23, 42, 0.12)',
-        backgroundColor: '#1E1B4B'
+        display: 'grid',
+        gridTemplateColumns: '270px 1fr',
+        gap: '16px',
+        alignItems: 'stretch'
       }}>
-        {/* Sliding Track for Smooth Slide Transition */}
+        {/* Left Column: Robu 4 Stacked Quick Service Cards */}
         <div style={{
           display: 'flex',
-          width: `${totalSlides * 100}%`,
-          transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
-          transition: 'transform 0.55s cubic-bezier(0.25, 1, 0.5, 1)'
+          flexDirection: 'column',
+          gap: '10px'
         }}>
+          {QUICK_SERVICES.map((srv) => {
+            const SrvIcon = srv.icon;
+            return (
+              <div
+                key={srv.id}
+                onClick={() => navigate(srv.link)}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid var(--robu-border-card)',
+                  borderRadius: '8px',
+                  padding: '12px 14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  cursor: 'pointer',
+                  flex: 1,
+                  transition: 'all 0.2s ease',
+                  boxShadow: 'var(--robu-shadow-sm)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--robu-primary-purple)';
+                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(56, 6, 128, 0.1)';
+                  e.currentTarget.style.transform = 'translateX(3px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--robu-border-card)';
+                  e.currentTarget.style.boxShadow = 'var(--robu-shadow-sm)';
+                  e.currentTarget.style.transform = 'translateX(0)';
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '8px',
+                    backgroundColor: 'var(--robu-purple-light)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--robu-primary-purple)'
+                  }}>
+                    <SrvIcon size={18} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--robu-text-dark)', lineHeight: 1.2 }}>
+                      {srv.title}
+                    </div>
+                    <div style={{ fontSize: '11px', color: 'var(--robu-text-muted)', marginTop: '2px' }}>
+                      {srv.subtitle}
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{
+                  fontSize: '11.5px',
+                  fontWeight: 700,
+                  color: 'var(--robu-primary-purple)',
+                  whiteSpace: 'nowrap'
+                }}>
+                  Order ›
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Right Column: Promotional Hero Carousel */}
+        <div style={{
+          position: 'relative',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          boxShadow: 'var(--robu-shadow-sm)',
+          border: '1px solid var(--robu-border-card)',
+          backgroundColor: '#1E1B4B'
+        }}>
+          {/* Sliding Track for Smooth Slide Transition */}
+          <div style={{
+            display: 'flex',
+            width: `${totalSlides * 100}%`,
+            transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
+            transition: 'transform 0.55s cubic-bezier(0.25, 1, 0.5, 1)'
+          }}>
           {HERO_SLIDES.map((slide) => (
             <div
               key={slide.id}
@@ -173,20 +295,30 @@ export default function HeroCarousel() {
                 {/* CTA & Price Row */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                   <button
+                    onClick={() => slide.targetUrl && navigate(slide.targetUrl)}
                     style={{
-                      backgroundColor: 'var(--robu-primary-orange)',
+                      background: 'linear-gradient(135deg, #EF4123 0%, #F97316 100%)',
                       color: '#FFFFFF',
                       padding: '12px 28px',
-                      borderRadius: '8px',
+                      borderRadius: '10px',
                       fontSize: '15px',
                       fontWeight: 700,
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '8px',
-                      boxShadow: '0 4px 14px rgba(239, 65, 35, 0.4)'
+                      border: 'none',
+                      cursor: 'pointer',
+                      boxShadow: '0 4px 18px rgba(239, 65, 35, 0.45)',
+                      transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--robu-orange-hover)'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--robu-primary-orange)'}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 6px 22px rgba(239, 65, 35, 0.6)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 18px rgba(239, 65, 35, 0.45)';
+                    }}
                   >
                     <span>{slide.buttonText}</span>
                     <ArrowRight size={16} />
@@ -200,13 +332,17 @@ export default function HeroCarousel() {
               </div>
 
               {/* Right Hero Visual Card */}
-              <div style={{
-                position: 'relative',
-                zIndex: 2,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
+              <div 
+                style={{
+                  position: 'relative',
+                  zIndex: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer'
+                }}
+                onClick={() => slide.targetUrl && navigate(slide.targetUrl)}
+              >
                 <div style={{
                   width: '260px',
                   height: '260px',
@@ -217,8 +353,12 @@ export default function HeroCarousel() {
                   padding: '16px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
+                  justifyContent: 'center',
+                  transition: 'transform 0.3s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.04)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
                   <img 
                     src={slide.image} 
                     alt={slide.title}
@@ -321,16 +461,18 @@ export default function HeroCarousel() {
               onClick={() => goToSlide(idx)}
               aria-label={`Go to slide ${idx + 1}`}
               style={{
-                width: currentSlide === idx ? '28px' : '9px',
-                height: '9px',
-                borderRadius: '5px',
-                backgroundColor: currentSlide === idx ? 'var(--robu-primary-orange)' : 'rgba(255, 255, 255, 0.4)',
+                width: currentSlide === idx ? '26px' : '8px',
+                height: '8px',
+                borderRadius: '4px',
+                backgroundColor: currentSlide === idx ? 'var(--robu-primary-purple)' : 'rgba(255, 255, 255, 0.5)',
                 transition: 'all 0.3s ease',
+                border: 'none',
                 cursor: 'pointer'
               }}
             />
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

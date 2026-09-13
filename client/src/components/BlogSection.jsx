@@ -49,12 +49,19 @@ export default function BlogSection() {
     <section className="robu-container robu-section">
       <div className="robu-section-header">
         <h2 className="robu-section-title">
-          <BookOpen size={24} color="var(--robu-purple)" />
+          <span style={{
+            display: 'inline-block',
+            width: '6px',
+            height: '24px',
+            backgroundColor: 'var(--robu-primary-orange)',
+            borderRadius: '3px',
+            marginRight: '4px'
+          }} />
           <span>Latest Engineering Blogs & Guides</span>
         </h2>
-        <a href="#blogs" className="robu-view-all-link">
+        <a href="#blogs" className="robu-btn-purple-outline">
           <span>View All Articles</span>
-          <ChevronRight size={16} />
+          <ChevronRight size={15} />
         </a>
       </div>
 

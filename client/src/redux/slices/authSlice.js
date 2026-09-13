@@ -61,12 +61,6 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.currentRole = action.payload.user?.role || 'customer';
     },
-    setRole: (state, action) => {
-      state.currentRole = action.payload;
-      if (DEMO_ACCOUNTS[action.payload]) {
-        state.user = DEMO_ACCOUNTS[action.payload];
-      }
-    },
     setUserState: (state, action) => {
       state.userState = action.payload;
     },
@@ -86,7 +80,6 @@ const authSlice = createSlice({
 
 export const { 
   setUser, 
-  setRole, 
   setUserState, 
   setAuthModalOpen, 
   setAuthMode, 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setSearchQuery, setSelectedProduct, setActiveCategory } from '../redux/slices/productSlice';
 import { toggleCart } from '../redux/slices/cartSlice';
 import { setComparisonModalOpen } from '../redux/slices/comparisonSlice';
@@ -32,6 +33,7 @@ const SEARCH_PLACEHOLDERS = [
 
 export default function HeaderMain() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { searchQuery, products } = useSelector((state) => state.products);
   const { items: cartItems, cartBounceTrigger } = useSelector((state) => state.cart);
   const { items: compareItems } = useSelector((state) => state.comparison);
@@ -87,11 +89,14 @@ export default function HeaderMain() {
 
   return (
     <header style={{
-      backgroundColor: '#FFFFFF',
-      borderBottom: '1px solid var(--robu-border)',
-      padding: '12px 0',
+      backgroundColor: 'rgba(255, 255, 255, 0.92)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
+      borderBottom: '1px solid rgba(226, 232, 240, 0.8)',
+      padding: '14px 0',
       position: 'relative',
-      zIndex: 100
+      zIndex: 100,
+      boxShadow: '0 4px 20px -4px rgba(15, 23, 42, 0.05)'
     }}>
       <div className="robu-container" style={{
         display: 'flex',
@@ -104,87 +109,78 @@ export default function HeaderMain() {
           onClick={() => {
             dispatch(setAdminView('storefront'));
             dispatch(setActiveCategory('all'));
+            navigate('/');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          style={{
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            flexShrink: 0
-          }}
+          style={{ cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}
         >
-          {/* VoltCart official brand logo */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
-          }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {/* Robu Circular 'r' Icon */}
             <div style={{
-              width: '38px',
-              height: '38px',
-              background: 'linear-gradient(135deg, var(--robu-primary-orange) 0%, #EA580C 100%)',
-              borderRadius: '8px',
+              width: '40px',
+              height: '40px',
+              backgroundColor: 'var(--robu-primary-orange)',
+              borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#FFFFFF',
               fontFamily: 'var(--font-robu-heading)',
-              fontWeight: 800,
-              fontSize: '20px',
-              boxShadow: '0 2px 8px rgba(239, 65, 35, 0.35)'
+              fontWeight: 900,
+              fontSize: '24px',
+              boxShadow: '0 3px 10px rgba(243, 108, 33, 0.35)',
+              lineHeight: 1
             }}>
-              ⚡
+              r
             </div>
             <div>
               <div style={{
                 fontFamily: 'var(--font-robu-heading)',
-                fontWeight: 800,
-                fontSize: '23px',
+                fontWeight: 900,
+                fontSize: '26px',
                 lineHeight: 1,
-                color: 'var(--robu-text-heading)',
-                letterSpacing: '-0.5px'
+                color: 'var(--robu-primary-orange)',
+                letterSpacing: '0.5px'
               }}>
-                VOLT<span style={{ color: 'var(--robu-primary-orange)' }}>CART</span>
+                ROBU.IN
               </div>
               <div style={{
-                fontSize: '9.5px',
+                fontSize: '10px',
                 fontWeight: 600,
                 color: 'var(--robu-text-muted)',
-                letterSpacing: '0.5px',
-                marginTop: '2px',
-                textTransform: 'uppercase'
+                letterSpacing: '0.4px',
+                marginTop: '3px'
               }}>
-                Robotics & Electronics
+                Your Ideas, Our Parts
               </div>
             </div>
           </div>
         </div>
 
-        {/* Center Search Bar with Dynamic Autocomplete Dropdown */}
+        {/* Center Search Bar with Solid Robu Purple Search Button */}
         <div 
           ref={searchContainerRef}
           style={{
             flex: 1,
-            maxWidth: '640px',
+            maxWidth: '620px',
             position: 'relative'
           }}
         >
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            border: '2px solid var(--robu-purple)',
-            borderRadius: '8px',
+            border: '2px solid var(--robu-primary-purple)',
+            borderRadius: '6px',
             overflow: 'hidden',
             backgroundColor: '#FFFFFF',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.04)'
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
           }}>
-            <div style={{ padding: '0 12px', color: 'var(--robu-text-muted)', display: 'flex', alignItems: 'center' }}>
+            <div style={{ padding: '0 12px', color: '#9CA3AF', display: 'flex', alignItems: 'center' }}>
               <Search size={18} />
             </div>
             <input
               type="text"
-              placeholder={`Search e.g. "${SEARCH_PLACEHOLDERS[placeholderIndex]}"`}
+              placeholder={`Search 1,200+ hardware items e.g. "${SEARCH_PLACEHOLDERS[placeholderIndex]}"`}
               value={searchQuery}
               onChange={(e) => {
                 dispatch(setSearchQuery(e.target.value));
@@ -195,25 +191,30 @@ export default function HeaderMain() {
                 flex: 1,
                 border: 'none',
                 outline: 'none',
-                fontSize: '14px',
+                fontSize: '13.5px',
                 padding: '10px 4px',
                 fontFamily: 'var(--font-robu-body)',
-                color: 'var(--robu-text-heading)'
+                color: '#1E1E24',
+                fontWeight: 500
               }}
             />
             <button
               onClick={() => setShowDropdown(false)}
               style={{
-                backgroundColor: 'var(--robu-purple)',
+                backgroundColor: 'var(--robu-primary-purple)',
                 color: '#FFFFFF',
-                fontWeight: 600,
-                fontSize: '14px',
-                padding: '10px 22px',
+                fontWeight: 700,
+                fontSize: '13px',
+                padding: '10px 24px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                transition: 'background-color 0.2s'
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s ease'
               }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--robu-purple-hover)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--robu-primary-purple)'}
             >
               <span>Search</span>
             </button>
@@ -301,6 +302,7 @@ export default function HeaderMain() {
                       onClick={() => {
                         dispatch(setSelectedProduct(prod));
                         setShowDropdown(false);
+                        navigate(`/product/${prod._id}`);
                       }}
                       style={{
                         display: 'flex',
@@ -365,53 +367,33 @@ export default function HeaderMain() {
         }}>
           {/* Admin / Staff Switcher - Strictly restricted to Staff and Admins */}
           {isAdminUser && (
-            adminView === 'storefront' ? (
-              <button
-                onClick={() => dispatch(setAdminView('admin'))}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  color: currentRole === 'super_admin' ? '#7C3AED' : 'var(--robu-purple)',
-                  backgroundColor: currentRole === 'super_admin' ? '#F3E8FF' : 'var(--robu-purple-light)',
-                  padding: '6px 10px',
-                  borderRadius: '6px',
-                  border: currentRole === 'super_admin' ? '1px solid #DDD6FE' : 'none'
-                }}
-                title={`Switch to Back-Office Dashboard (${currentRole.replace('_', ' ')})`}
-              >
-                <LayoutDashboard size={15} />
-                <span className="hide-mobile">
-                  {currentRole === 'super_admin' ? 'Super Admin' : currentRole === 'admin' ? 'Admin' : 'Staff Panel'}
-                </span>
-              </button>
-            ) : (
-              <button
-                onClick={() => dispatch(setAdminView('storefront'))}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  color: '#FFFFFF',
-                  backgroundColor: 'var(--robu-primary-orange)',
-                  padding: '6px 10px',
-                  borderRadius: '6px'
-                }}
-                title="Return to Storefront"
-              >
-                <Store size={15} />
-                <span className="hide-mobile">Storefront</span>
-              </button>
-            )
+            <button
+              onClick={() => navigate('/admin')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                fontSize: '12px',
+                fontWeight: 600,
+                color: currentRole === 'super_admin' ? '#7C3AED' : 'var(--robu-purple)',
+                backgroundColor: currentRole === 'super_admin' ? '#F3E8FF' : 'var(--robu-purple-light)',
+                padding: '6px 10px',
+                borderRadius: '6px',
+                border: currentRole === 'super_admin' ? '1px solid #DDD6FE' : 'none',
+                cursor: 'pointer'
+              }}
+              title={`Staff Management Console (${currentRole.replace('_', ' ')})`}
+            >
+              <LayoutDashboard size={15} />
+              <span className="hide-mobile">
+                {currentRole === 'super_admin' ? 'Super Admin' : currentRole === 'admin' ? 'Admin' : 'Staff Panel'}
+              </span>
+            </button>
           )}
 
           {/* 1. Compare */}
           <button
-            onClick={() => dispatch(setComparisonModalOpen(true))}
+            onClick={() => navigate('/compare')}
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -419,7 +401,10 @@ export default function HeaderMain() {
               position: 'relative',
               color: 'var(--robu-text-dark)',
               fontSize: '11px',
-              fontWeight: 500
+              fontWeight: 500,
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer'
             }}
             title="Product Comparison"
           >
@@ -450,14 +435,17 @@ export default function HeaderMain() {
 
           {/* 2. Orders */}
           <button
-            onClick={() => dispatch(setOrderHistoryOpen(true))}
+            onClick={() => navigate('/orders')}
             style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               color: 'var(--robu-text-dark)',
               fontSize: '11px',
-              fontWeight: 500
+              fontWeight: 500,
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer'
             }}
             title="My Orders"
           >
@@ -467,14 +455,17 @@ export default function HeaderMain() {
 
           {/* 3. Track Order */}
           <button
-            onClick={() => dispatch(setOrderHistoryOpen(true))}
+            onClick={() => navigate('/orders')}
             style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               color: 'var(--robu-text-dark)',
               fontSize: '11px',
-              fontWeight: 500
+              fontWeight: 500,
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer'
             }}
             title="Live Logistics Tracking"
           >
@@ -491,7 +482,10 @@ export default function HeaderMain() {
               alignItems: 'center',
               color: 'var(--robu-text-dark)',
               fontSize: '11px',
-              fontWeight: 500
+              fontWeight: 500,
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer'
             }}
             title="User Account"
           >
@@ -503,7 +497,7 @@ export default function HeaderMain() {
 
           {/* 5. Wishlist */}
           <button
-            onClick={() => dispatch(setWishlistOpen(true))}
+            onClick={() => navigate('/wishlist')}
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -511,7 +505,10 @@ export default function HeaderMain() {
               position: 'relative',
               color: 'var(--robu-text-dark)',
               fontSize: '11px',
-              fontWeight: 500
+              fontWeight: 500,
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer'
             }}
             title="Saved Wishlist"
           >
@@ -546,7 +543,7 @@ export default function HeaderMain() {
 
           {/* 6. Cart */}
           <button
-            onClick={() => dispatch(toggleCart())}
+            onClick={() => navigate('/cart')}
             style={{
               display: 'flex',
               alignItems: 'center',

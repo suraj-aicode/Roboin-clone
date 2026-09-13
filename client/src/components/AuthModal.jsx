@@ -83,35 +83,70 @@ export default function AuthModal() {
         });
       }
     } catch {
-      // Local fallback in case network is disconnected
-      let matched = Object.values(DEMO_ACCOUNTS).find(a => a.email.toLowerCase() === formData.email.toLowerCase());
-      if (!matched) {
-        matched = {
+      // Local fallback verification requiring exact password match
+      const DEMO_CREDENTIALS = {
+        'admin@robo.in': { password: 'AdminPassword123!', account: DEMO_ACCOUNTS.super_admin },
+        'admin.ops@robo.in': { password: 'AdminPassword123!', account: DEMO_ACCOUNTS.admin },
+        'catalog@robo.in': { password: 'CatalogPassword123!', account: DEMO_ACCOUNTS.catalog_manager },
+        'inventory@robo.in': { password: 'InventoryPassword123!', account: DEMO_ACCOUNTS.inventory_manager },
+        'customer@robo.in': { password: 'CustomerPassword123!', account: DEMO_ACCOUNTS.customer }
+      };
+
+      const normalizedEmail = formData.email ? formData.email.trim().toLowerCase() : '';
+      const cred = DEMO_CREDENTIALS[normalizedEmail];
+
+      if (authMode === 'login') {
+        if (!cred || cred.password !== formData.password) {
+          setMessage({
+            type: 'danger',
+            text: 'Invalid email or password. Access denied.'
+          });
+          setIsSubmitting(false);
+          return;
+        }
+
+        dispatch(setUser({
+          user: cred.account,
+          token: `jwt_fallback_${Date.now()}`
+        }));
+
+        if (cred.account.role === 'customer' || cred.account.role === 'guest') {
+          dispatch(setAdminView('storefront'));
+        }
+
+        setMessage({
+          type: 'success',
+          text: `Authenticated securely as ${cred.account.name} [${cred.account.role.toUpperCase()}].`
+        });
+
+        setTimeout(() => {
+          dispatch(setAuthModalOpen(false));
+        }, 1000);
+      } else {
+        // Register new customer account
+        const newCustomer = {
           name: formData.name || 'Maker Engineer',
           email: formData.email,
-          role: formData.role || 'customer',
+          role: 'customer',
           organization: formData.organization || 'Maker Labs',
           gstin: formData.gstin || ''
         };
-      }
 
-      dispatch(setUser({
-        user: matched,
-        token: `jwt_fallback_${Date.now()}`
-      }));
+        dispatch(setUser({
+          user: newCustomer,
+          token: `jwt_fallback_${Date.now()}`
+        }));
 
-      if (matched.role === 'customer' || matched.role === 'guest') {
         dispatch(setAdminView('storefront'));
+        setMessage({
+          type: 'success',
+          text: `Registered and signed in as ${newCustomer.name}.`
+        });
+
+        setTimeout(() => {
+          dispatch(setAuthModalOpen(false));
+        }, 1000);
       }
-
-      setMessage({
-        type: 'success',
-        text: `Signed in as ${matched.name} [${matched.role.toUpperCase()}].`
-      });
-
-      setTimeout(() => {
-        dispatch(setAuthModalOpen(false));
-      }, 1000);
     } finally {
       setIsSubmitting(false);
     }
@@ -132,7 +167,7 @@ export default function AuthModal() {
             {authMode === 'forgot' && 'Reset Password (OTP)'}
           </h2>
           <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '0.3rem' }}>
-            {authMode === 'login' && 'Access GST invoicing, order tracking & B2B bulk orders'}
+            {authMode === 'login' && 'Enter your verified email and password to authenticate'}
             {authMode === 'register' && 'Register with optional GSTIN for Input Tax Credit'}
             {authMode === 'forgot' && 'Enter your email to receive recovery instructions'}
           </p>
@@ -156,76 +191,24 @@ export default function AuthModal() {
           </div>
         )}
 
-        {/* 1-Click Demo Login Presets */}
+        {/* Informative Security Notice for Staff */}
         {authMode === 'login' && (
           <div style={{
             marginBottom: '1rem',
-            padding: '0.75rem',
+            padding: '0.75rem 0.9rem',
             borderRadius: '8px',
             backgroundColor: '#F8FAFC',
-            border: '1px solid var(--border-color)'
+            border: '1px solid var(--border-color)',
+            fontSize: '11.5px',
+            color: 'var(--text-muted)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
           }}>
-            <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '0.45rem', textTransform: 'uppercase' }}>
-              One-Click Role Presets
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.35rem' }}>
-              <button
-                type="button"
-                onClick={() => setFormData({ ...formData, email: 'customer@robo.in', password: 'CustomerPassword123!' })}
-                style={{
-                  padding: '6px 4px',
-                  borderRadius: '6px',
-                  backgroundColor: formData.email === 'customer@robo.in' ? '#EFF6FF' : '#FFFFFF',
-                  border: `1px solid ${formData.email === 'customer@robo.in' ? '#3B82F6' : '#E2E8F0'}`,
-                  fontSize: '10.5px',
-                  fontWeight: 600,
-                  color: '#1E293B',
-                  textAlign: 'center',
-                  cursor: 'pointer'
-                }}
-                title="Customer Account (Storefront Only)"
-              >
-                👤 Customer
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setFormData({ ...formData, email: 'admin.ops@robo.in', password: 'AdminPassword123!' })}
-                style={{
-                  padding: '6px 4px',
-                  borderRadius: '6px',
-                  backgroundColor: formData.email === 'admin.ops@robo.in' ? '#EFF6FF' : '#FFFFFF',
-                  border: `1px solid ${formData.email === 'admin.ops@robo.in' ? '#3B82F6' : '#E2E8F0'}`,
-                  fontSize: '10.5px',
-                  fontWeight: 600,
-                  color: '#1E293B',
-                  textAlign: 'center',
-                  cursor: 'pointer'
-                }}
-                title="Administrator (Operations)"
-              >
-                ⚙️ Admin
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setFormData({ ...formData, email: 'admin@robo.in', password: 'AdminPassword123!' })}
-                style={{
-                  padding: '6px 4px',
-                  borderRadius: '6px',
-                  backgroundColor: formData.email === 'admin@robo.in' ? '#F3E8FF' : '#FFFFFF',
-                  border: `1px solid ${formData.email === 'admin@robo.in' ? '#8B5CF6' : '#E2E8F0'}`,
-                  fontSize: '10.5px',
-                  fontWeight: 600,
-                  color: '#581C87',
-                  textAlign: 'center',
-                  cursor: 'pointer'
-                }}
-                title="Super Admin (All Privileges)"
-              >
-                🛡️ Super Admin
-              </button>
-            </div>
+            <Lock size={15} color="var(--robu-primary-orange)" style={{ flexShrink: 0 }} />
+            <span>
+              <strong>Staff & Admin Portal:</strong> Elevated roles require authorized staff credentials and password verification.
+            </span>
           </div>
         )}
 

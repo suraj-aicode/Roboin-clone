@@ -63,14 +63,22 @@ export default function OurServicesSection() {
     <section className="robu-container robu-section">
       <div className="robu-section-header">
         <h2 className="robu-section-title">
-          <span>Robu On-Demand Services</span>
+          <span style={{
+            display: 'inline-block',
+            width: '6px',
+            height: '24px',
+            backgroundColor: 'var(--robu-primary-orange)',
+            borderRadius: '3px',
+            marginRight: '4px'
+          }} />
+          <span>Robu On-Demand Custom Services</span>
         </h2>
         <button
           onClick={() => dispatch(setRFQModalOpen(true))}
-          className="robu-view-all-link"
+          className="robu-btn-purple-outline"
         >
-          <span>Request Custom Quotation</span>
-          <ArrowRight size={16} />
+          <span>Request Custom Quote</span>
+          <ArrowRight size={14} />
         </button>
       </div>
 

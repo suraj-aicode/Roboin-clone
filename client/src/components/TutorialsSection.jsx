@@ -49,15 +49,22 @@ export default function TutorialsSection() {
     <section className="robu-container robu-section">
       <div className="robu-section-header">
         <h2 className="robu-section-title">
-          <Video size={26} color="#FF0000" />
-          <span>Two Minute Tutorials</span>
+          <span style={{
+            display: 'inline-block',
+            width: '6px',
+            height: '24px',
+            backgroundColor: 'var(--robu-primary-orange)',
+            borderRadius: '3px',
+            marginRight: '4px'
+          }} />
+          <span>Robu Two-Minute Tutorials</span>
         </h2>
         <button
           onClick={() => dispatch(setTutorialsModalOpen(true))}
-          className="robu-view-all-link"
+          className="robu-btn-purple-outline"
         >
           <span>View All Videos</span>
-          <ChevronRight size={16} />
+          <ChevronRight size={15} />
         </button>
       </div>
 

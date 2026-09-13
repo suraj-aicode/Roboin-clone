@@ -1,70 +1,148 @@
 /* ==========================================================================
-   ROBU.IN Official Design System Tokens & Global Styles
-   Extracted directly from https://robu.in/ live e-commerce platform
+   ROBU.IN / VoltCart Official Design System Tokens & Global Styles
+   High-Tech Modern Aesthetics • Glassmorphism • Micro-Animations • Fluid Transitions
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
-  /* Brand Primary Colors */
-  --robu-primary-orange: #EF4123;
-  --robu-orange-hover: #D73317;
-  --robu-orange-light: #FFF2EE;
-  
-  /* Accent Deep Purple / Indigo (Buttons, Search Button, Badges) */
-  --robu-purple: #3B0187;
-  --robu-purple-hover: #2A0063;
-  --robu-purple-light: #ECE4F8;
+  /* Brand Primary Colors - Official Robu Tangerine Orange */
+  --robu-primary-orange: #F36C21;
+  --robu-orange-hover: #E55B13;
+  --robu-orange-light: #FFF4EE;
+  --robu-orange-gradient: linear-gradient(135deg, #F36C21 0%, #E55B13 100%);
+  --robu-orange-glow: 0 4px 16px rgba(243, 108, 33, 0.35);
 
-  /* Background Colors */
-  --robu-bg-top: #EBF1FA;
-  --robu-bg-body: #F4F6F9;
+  /* Official Robu Signature Action Purple */
+  --robu-primary-purple: #380680;
+  --robu-purple-hover: #4A0E99;
+  --robu-purple-light: #F5EFFF;
+  --robu-purple-border: #D8C7F7;
+  --robu-purple-gradient: linear-gradient(135deg, #380680 0%, #4A0E99 100%);
+  --robu-purple-glow: 0 4px 16px rgba(56, 6, 128, 0.3);
+
+  /* Functional Status Accents */
+  --robu-success: #10B981;
+  --robu-success-light: #ECFDF5;
+  --robu-danger: #EF4444;
+  --robu-danger-light: #FEF2F2;
+
+  /* Official Robu Backgrounds */
+  --robu-bg-top: #F4F5F8;
+  --robu-bg-body: #F4F5F8;
   --robu-bg-card: #FFFFFF;
-  --robu-bg-footer: #EEF2F8;
+  --robu-bg-footer: #1E1E24;
   --robu-bg-input: #FFFFFF;
 
-  /* Service Category Pastel Tints */
-  --robu-service-pcb: #FDE8E0;
-  --robu-service-3d: #ECE4F8;
-  --robu-service-laser: #D8F3EC;
-  --robu-service-battery: #D0F0F7;
-
   /* Text & Typography */
-  --robu-text-heading: #0F172A;
-  --robu-text-dark: #1E293B;
-  --robu-text-body: #334155;
-  --robu-text-muted: #64748B;
-  --robu-text-light: #94A3B8;
+  --robu-text-heading: #1E1E24;
+  --robu-text-dark: #222222;
+  --robu-text-body: #4B5563;
+  --robu-text-muted: #6B7280;
+  --robu-text-sku: #888888;
 
   /* Borders & Dividers */
-  --robu-border: #E2E8F0;
-  --robu-border-light: #EDF2F7;
-  --robu-border-focus: #3B0187;
+  --robu-border: #E5E7EB;
+  --robu-border-light: #F3F4F6;
+  --robu-border-card: #EAEAEA;
 
   /* Elevation Shadows */
   --robu-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --robu-shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
-  --robu-shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.12);
-  --robu-shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
+  --robu-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --robu-shadow-hover: 0 10px 25px -4px rgba(0, 0, 0, 0.12);
 
   /* Fonts */
-  --font-robu-heading: 'Outfit', sans-serif;
-  --font-robu-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-robu-heading: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-robu-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-robu-mono: "JetBrains Mono", monospace;
 
   /* Layout Dimensions */
-  --robu-max-width: 1320px;
+  --robu-max-width: 1360px;
+  --robu-radius-xs: 4px;
   --robu-radius-sm: 6px;
-  --robu-radius-md: 10px;
-  --robu-radius-lg: 14px;
-  --robu-radius-xl: 20px;
+  --robu-radius-md: 8px;
+  --robu-radius-lg: 12px;
+  --robu-radius-xl: 16px;
   --robu-radius-pill: 9999px;
 
-  /* Transition Curves */
-  --robu-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Transitions */
+  --robu-transition: all 0.22s ease;
+  --robu-transition-spring: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Page Transition Animations */
+@keyframes pageSwitchEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.995);
+    filter: blur(1.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.page-transition-wrapper {
+  animation: pageSwitchEnter 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+/* Top Progress Bar for Page Switching */
+.page-switch-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: linear-gradient(
+    90deg,
+    #ff6b00 0%,
+    #ef4123 40%,
+    #4318ff 80%,
+    #06b6d4 100%
+  );
+  box-shadow:
+    0 0 12px rgba(255, 107, 0, 0.8),
+    0 0 4px #4318ff;
+  z-index: 99999;
+  transition:
+    width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease;
+}
+
+/* Glow Badge Pulse */
+@keyframes livePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.9;
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+}
+
+/* Float shimmer */
+@keyframes shimmerGlow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 /* Reset & Base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -73,6 +151,11 @@
 body {
   font-family: var(--font-robu-body);
   background-color: var(--robu-bg-body);
+  background-image:
+    radial-gradient(at 15% 10%, rgba(255, 85, 0, 0.035) 0px, transparent 40%),
+    radial-gradient(at 85% 5%, rgba(67, 24, 255, 0.04) 0px, transparent 45%),
+    radial-gradient(at 50% 90%, rgba(6, 182, 212, 0.03) 0px, transparent 50%);
+  background-attachment: fixed;
   color: var(--robu-text-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -80,7 +163,29 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+  border: 2px solid #f1f5f9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--robu-primary-orange);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-robu-heading);
   color: var(--robu-text-heading);
   font-weight: 700;
@@ -121,88 +226,253 @@ img {
 
 /* Section Common Styles */
 .robu-section {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 48px;
+  margin-bottom: 48px;
 }
 
 .robu-section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .robu-section-title {
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--robu-text-heading);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  letter-spacing: -0.02em;
 }
 
 @media (min-width: 768px) {
   .robu-section-title {
-    font-size: 26px;
+    font-size: 27px;
   }
 }
 
 .robu-view-all-link {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13.5px;
+  font-weight: 700;
   color: var(--robu-purple);
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 6px 14px;
+  border-radius: var(--robu-radius-pill);
+  background-color: var(--robu-purple-light);
+  transition: var(--robu-transition);
 }
 
 .robu-view-all-link:hover {
-  color: var(--robu-primary-orange);
+  background-color: var(--robu-purple);
+  color: #ffffff;
+  transform: translateX(3px);
 }
 
-/* Card Lift Animation */
+/* Card Lift & High-Tech Hover */
 .robu-card-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s ease;
 }
 
 .robu-card-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--robu-shadow-hover);
+  transform: translateY(-5px);
+  box-shadow:
+    0 16px 32px -4px rgba(15, 23, 42, 0.1),
+    0 6px 16px -2px rgba(255, 85, 0, 0.08);
+  border-color: rgba(255, 85, 0, 0.3) !important;
 }
 
-/* Buttons */
-.robu-btn-primary {
-  background-color: var(--robu-purple);
-  color: #FFFFFF;
-  font-weight: 600;
-  font-size: 14px;
+/* Official Robu Action Buttons */
+.robu-btn-purple {
+  background-color: var(--robu-primary-purple);
+  color: #FFFFFF !important;
+  font-weight: 700;
+  font-size: 13.5px;
   padding: 10px 22px;
-  border-radius: var(--robu-radius-md);
+  border-radius: var(--robu-radius-sm);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: var(--robu-transition);
 }
 
-.robu-btn-primary:hover {
+.robu-btn-purple:hover {
   background-color: var(--robu-purple-hover);
+  box-shadow: 0 4px 14px rgba(56, 6, 128, 0.35);
+  transform: translateY(-1px);
+}
+
+.robu-btn-purple-outline {
+  background-color: transparent;
+  color: var(--robu-primary-purple) !important;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: var(--robu-radius-sm);
+  border: 1.5px solid var(--robu-primary-purple);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: var(--robu-transition);
+}
+
+.robu-btn-purple-outline:hover {
+  background-color: var(--robu-primary-purple);
+  color: #FFFFFF !important;
 }
 
 .robu-btn-orange {
   background-color: var(--robu-primary-orange);
-  color: #FFFFFF;
-  font-weight: 600;
-  font-size: 14px;
+  color: #FFFFFF !important;
+  font-weight: 700;
+  font-size: 13.5px;
   padding: 10px 22px;
+  border-radius: var(--robu-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: var(--robu-transition);
+}
+
+.robu-btn-orange:hover {
+  background-color: var(--robu-orange-hover);
+  box-shadow: 0 4px 14px rgba(243, 108, 33, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Official Robu Product Card Anatomy */
+.robu-product-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--robu-border-card);
+  border-radius: var(--robu-radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.22s ease;
+}
+
+.robu-product-card:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.robu-product-card .card-category {
+  font-size: 11px;
+  color: var(--robu-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.robu-product-card .card-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--robu-text-dark);
+  line-height: 1.4;
+  height: 38px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 6px;
+  text-decoration: none;
+}
+
+.robu-product-card .card-title:hover {
+  color: var(--robu-primary-orange);
+}
+
+.robu-product-card .card-sku {
+  font-size: 11.5px;
+  color: var(--robu-text-sku);
+  margin-bottom: 8px;
+}
+
+.robu-product-card .card-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.robu-product-card .card-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--robu-primary-purple);
+}
+
+.robu-product-card .card-price-gst {
+  font-size: 11px;
+  color: var(--robu-text-muted);
+  font-weight: 500;
+}
+
+.robu-product-card .card-mrp {
+  font-size: 12px;
+  color: #9CA3AF;
+  text-decoration: line-through;
+}
+
+.robu-product-card .card-add-btn {
+  width: 100%;
+  border: 1.5px solid var(--robu-primary-purple);
+  color: var(--robu-primary-purple);
+  background-color: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: var(--robu-radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.robu-product-card .card-add-btn:hover {
+  background-color: var(--robu-primary-purple);
+  color: #FFFFFF;
+}
+
+.robu-btn-orange {
+  background: var(--robu-orange-gradient);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 11px 24px;
   border-radius: var(--robu-radius-md);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  box-shadow: var(--robu-orange-glow);
+  transition: var(--robu-transition);
 }
 
 .robu-btn-orange:hover {
-  background-color: var(--robu-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 85, 0, 0.5);
 }
 
 /* Continuous Brand Marquee */

@@ -2,18 +2,22 @@
 node_modules/
 client/node_modules/
 server/node_modules/
+frontend/node_modules/
+backend/node_modules/
 vendor/
 docs/legacy-php-reference/payment/vendor/
 
 
 # Production builds
 client/dist/
+frontend/dist/
 dist/
 
 # Environment and sensitive config
 .env
 .env.local
 server/.env
+backend/.env
 *.local
 
 # Logs

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setActiveCategory } from '../redux/slices/productSlice';
 import { 
   Menu, 
@@ -37,6 +38,7 @@ export const ROBU_TOP_CATEGORIES = [
 
 export default function StickyCategoryNav() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { activeCategory } = useSelector((state) => state.products);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -46,6 +48,7 @@ export default function StickyCategoryNav() {
     dispatch(setActiveCategory(slug));
     setDropdownOpen(false);
     setMobileDrawerOpen(false);
+    navigate(`/category/${slug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -76,9 +79,11 @@ export default function StickyCategoryNav() {
       position: 'sticky',
       top: 0,
       zIndex: 90,
-      backgroundColor: 'var(--robu-bg-top)',
+      backgroundColor: 'rgba(255, 255, 255, 0.94)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
       borderBottom: '1px solid var(--robu-border)',
-      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.05)'
+      boxShadow: '0 4px 16px -2px rgba(15, 23, 42, 0.05)'
     }}>
       <div className="robu-container" style={{
         display: 'flex',
@@ -87,14 +92,14 @@ export default function StickyCategoryNav() {
         height: '48px',
         position: 'relative'
       }}>
-        {/* "All Categories" Hamburger Pill Button */}
+        {/* "All Categories" Solid Robu Purple Button */}
         <div style={{ position: 'relative', flexShrink: 0 }}>
           <button
             onClick={toggleCategories}
             style={{
-              backgroundColor: '#E2E8F0',
-              color: '#1E1B4B',
-              borderRadius: '8px',
+              backgroundColor: 'var(--robu-primary-purple)',
+              color: '#FFFFFF',
+              borderRadius: '6px',
               padding: '8px 16px',
               fontSize: '13.5px',
               fontWeight: 700,
@@ -102,10 +107,14 @@ export default function StickyCategoryNav() {
               alignItems: 'center',
               gap: '8px',
               cursor: 'pointer',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+              border: 'none',
+              boxShadow: '0 2px 8px rgba(56, 6, 128, 0.25)',
+              transition: 'background-color 0.2s'
             }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--robu-purple-hover)'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--robu-primary-purple)'}
           >
-            <Menu size={16} color="var(--robu-purple)" />
+            <Menu size={16} color="#FFFFFF" />
             <span>All Categories</span>
             <ChevronDown size={14} style={{
               transform: dropdownOpen ? 'rotate(180deg)' : 'none',
@@ -121,7 +130,7 @@ export default function StickyCategoryNav() {
               left: 0,
               width: '280px',
               backgroundColor: '#FFFFFF',
-              borderRadius: '10px',
+              borderRadius: '8px',
               border: '1px solid var(--robu-border)',
               boxShadow: '0 12px 28px rgba(15, 23, 42, 0.12)',
               padding: '8px 0',
@@ -134,12 +143,14 @@ export default function StickyCategoryNav() {
                   textAlign: 'left',
                   padding: '9px 16px',
                   fontSize: '13px',
-                  fontWeight: activeCategory === 'all' || activeCategory === 'cat-all' ? 700 : 500,
+                  fontWeight: activeCategory === 'all' || activeCategory === 'cat-all' ? 700 : 600,
                   color: activeCategory === 'all' ? 'var(--robu-primary-orange)' : 'var(--robu-text-dark)',
                   backgroundColor: activeCategory === 'all' ? 'var(--robu-orange-light)' : 'transparent',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '10px'
+                  gap: '10px',
+                  border: 'none',
+                  cursor: 'pointer'
                 }}
               >
                 <Zap size={15} color="var(--robu-primary-orange)" />
@@ -165,7 +176,9 @@ export default function StickyCategoryNav() {
                       backgroundColor: isActive ? 'var(--robu-orange-light)' : 'transparent',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '10px'
+                      gap: '10px',
+                      border: 'none',
+                      cursor: 'pointer'
                     }}
                     onMouseEnter={(e) => {
                       if (!isActive) e.currentTarget.style.backgroundColor = 'var(--robu-bg-top)';
@@ -174,8 +187,9 @@ export default function StickyCategoryNav() {
                       if (!isActive) e.currentTarget.style.backgroundColor = 'transparent';
                     }}
                   >
-                    <Icon size={15} color={isActive ? "var(--robu-primary-orange)" : "var(--robu-text-muted)"} />
-                    <span>{cat.name}</span>
+                    <Icon size={15} color={isActive ? "var(--robu-primary-orange)" : "#9CA3AF"} />
+                    <span style={{ flex: 1 }}>{cat.name}</span>
+                    <span style={{ color: '#D1D5DB', fontSize: '11px' }}>›</span>
                   </button>
                 );
               })}
@@ -183,74 +197,146 @@ export default function StickyCategoryNav() {
           )}
         </div>
 
-        {/* Horizontal Scrolling Row of Category Links */}
+        {/* Horizontal Navigation Links */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '18px',
+          gap: '20px',
           overflowX: 'auto',
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
-          padding: '0 16px',
+          padding: '0 20px',
           flex: 1,
           whiteSpace: 'nowrap'
         }}>
-          {ROBU_TOP_CATEGORIES.map(cat => {
-            const isActive = activeCategory === cat.slug;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => handleSelectCategory(cat.slug)}
-                style={{
-                  fontSize: '13px',
-                  fontWeight: isActive ? 700 : 600,
-                  color: isActive ? 'var(--robu-primary-orange)' : 'var(--robu-text-dark)',
-                  borderBottom: isActive ? '2px solid var(--robu-primary-orange)' : '2px solid transparent',
-                  padding: '12px 2px',
-                  cursor: 'pointer',
-                  flexShrink: 0
-                }}
-                onMouseEnter={(e) => {
-                  if (!isActive) e.currentTarget.style.color = 'var(--robu-primary-orange)';
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) e.currentTarget.style.color = 'var(--robu-text-dark)';
-                }}
-              >
-                {cat.name}
-              </button>
-            );
-          })}
+          <button
+            onClick={() => navigate('/')}
+            style={{
+              fontSize: '13.5px',
+              fontWeight: 700,
+              color: 'var(--robu-primary-orange)',
+              borderBottom: '2px solid var(--robu-primary-orange)',
+              padding: '12px 2px',
+              cursor: 'pointer',
+              flexShrink: 0,
+              background: 'none',
+              borderTop: 'none',
+              borderLeft: 'none',
+              borderRight: 'none'
+            }}
+          >
+            Home
+          </button>
+
+          <button
+            onClick={() => handleSelectCategory('all')}
+            style={{
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--robu-text-dark)',
+              border: 'none',
+              background: 'none',
+              padding: '12px 2px',
+              cursor: 'pointer',
+              flexShrink: 0
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--robu-primary-orange)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--robu-text-dark)'}
+          >
+            Shop
+          </button>
+
+          <button
+            onClick={() => navigate('/b2b-quote')}
+            style={{
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--robu-text-dark)',
+              border: 'none',
+              background: 'none',
+              padding: '12px 2px',
+              cursor: 'pointer',
+              flexShrink: 0
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--robu-primary-orange)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--robu-text-dark)'}
+          >
+            Bulk Enquiry
+          </button>
+
+          <button
+            onClick={() => navigate('/tutorials')}
+            style={{
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--robu-text-dark)',
+              border: 'none',
+              background: 'none',
+              padding: '12px 2px',
+              cursor: 'pointer',
+              flexShrink: 0
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--robu-primary-orange)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--robu-text-dark)'}
+          >
+            Blogs & Tutorials
+          </button>
+
+          {/* Quick Categories */}
+          {ROBU_TOP_CATEGORIES.slice(0, 5).map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => handleSelectCategory(cat.slug)}
+              style={{
+                fontSize: '13px',
+                fontWeight: activeCategory === cat.slug ? 700 : 500,
+                color: activeCategory === cat.slug ? 'var(--robu-primary-orange)' : 'var(--robu-text-body)',
+                border: 'none',
+                background: 'none',
+                padding: '12px 2px',
+                cursor: 'pointer',
+                flexShrink: 0
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--robu-primary-orange)'}
+              onMouseLeave={(e) => {
+                if (activeCategory !== cat.slug) e.currentTarget.style.color = 'var(--robu-text-body)';
+              }}
+            >
+              {cat.name}
+            </button>
+          ))}
         </div>
 
-        {/* "Sell on Robu" Link on the Right */}
-        <a
-          href="#sell-on-robu"
+        {/* "Sell on Robu" Button on the Right */}
+        <button
+          onClick={() => navigate('/b2b-quote')}
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
             fontSize: '13px',
             fontWeight: 700,
-            color: 'var(--robu-purple)',
+            color: 'var(--robu-primary-purple)',
             flexShrink: 0,
-            padding: '6px 12px',
+            padding: '6px 14px',
             borderRadius: '6px',
             backgroundColor: '#FFFFFF',
-            border: '1px solid var(--robu-border)'
+            border: '1.5px solid var(--robu-primary-purple)',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'var(--robu-purple)';
+            e.currentTarget.style.backgroundColor = 'var(--robu-primary-purple)';
             e.currentTarget.style.color = '#FFFFFF';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = '#FFFFFF';
-            e.currentTarget.style.color = 'var(--robu-purple)';
+            e.currentTarget.style.color = 'var(--robu-primary-purple)';
           }}
         >
-          <Store size={14} />
-          <span>Sell on VoltCart</span>
-        </a>
+          <Store size={15} />
+          <span>Sell on Robu</span>
+        </button>
       </div>
 
       {/* Mobile Drawer Overlay */}

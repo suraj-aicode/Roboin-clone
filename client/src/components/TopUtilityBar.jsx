@@ -1,28 +1,21 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setRole, setUserState, setAuthModalOpen } from '../redux/slices/authSlice';
-import { setAdminView } from '../redux/slices/orderSlice';
-import { Phone, HelpCircle, User, ShieldCheck, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { setUserState, setAuthModalOpen, logout } from '../redux/slices/authSlice';
+import { Phone, HelpCircle, User, ShieldCheck, MapPin, Lock, LogOut } from 'lucide-react';
 
 export default function TopUtilityBar() {
   const dispatch = useDispatch();
   const { user, currentRole, userState } = useSelector((state) => state.auth);
 
-  const handleRoleChange = (newRole) => {
-    dispatch(setRole(newRole));
-    if (newRole === 'customer' || newRole === 'guest') {
-      dispatch(setAdminView('storefront'));
-    }
-  };
-
   return (
     <div style={{
-      backgroundColor: 'var(--robu-bg-top)',
-      borderBottom: '1px solid var(--robu-border)',
-      fontSize: '13px',
-      color: 'var(--robu-text-dark)',
-      lineHeight: '38px',
-      minHeight: '38px'
+      backgroundColor: '#F4F5F8',
+      borderBottom: '1px solid #E5E7EB',
+      fontSize: '12px',
+      color: '#555555',
+      lineHeight: '34px',
+      minHeight: '34px'
     }}>
       <div className="robu-container" style={{
         display: 'flex',
@@ -31,8 +24,8 @@ export default function TopUtilityBar() {
         flexWrap: 'wrap',
         gap: '8px'
       }}>
-        {/* Left Side: Support Phone & Info */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+        {/* Left Side: Support Phone & Links */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <a 
             href="tel:18002666123" 
             style={{ 
@@ -40,82 +33,68 @@ export default function TopUtilityBar() {
               alignItems: 'center', 
               gap: '6px', 
               fontWeight: 600,
-              color: 'var(--robu-text-dark)' 
+              color: '#333333',
+              textDecoration: 'none'
             }}
           >
-            <Phone size={14} color="var(--robu-primary-orange)" />
+            <Phone size={13} color="var(--robu-primary-orange)" />
             <span>1800 266 6123</span>
           </a>
 
-          <span style={{ color: 'var(--robu-border)' }}>|</span>
+          <span style={{ color: '#D1D5DB' }}>|</span>
 
-          <a 
-            href="#support" 
+          <Link 
+            to="/support" 
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
               gap: '5px',
-              color: 'var(--robu-text-muted)'
+              color: '#555555',
+              textDecoration: 'none',
+              fontWeight: 500
             }}
           >
-            <HelpCircle size={14} />
-            <span>Customer Support (9:30 AM - 6:00 PM)</span>
-          </a>
+            <HelpCircle size={13} />
+            <span>Customer Support</span>
+          </Link>
         </div>
 
-        {/* Right Side: RBAC Role, GST State & Account */}
+        {/* Right Side: Authenticated Identity, GST State & Login/Logout */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          {/* RBAC Role Selector & Badge */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          {/* Authenticated Role Badge & User Name (Protected - No Dropdown) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{
               fontSize: '11px',
               fontWeight: 700,
-              padding: '2px 7px',
+              padding: '2px 8px',
               borderRadius: '4px',
-              backgroundColor: currentRole === 'super_admin' ? '#F3E8FF' : currentRole === 'admin' ? '#EFF6FF' : '#F1F5F9',
-              color: currentRole === 'super_admin' ? '#7C3AED' : currentRole === 'admin' ? '#2563EB' : '#475569',
-              border: `1px solid ${currentRole === 'super_admin' ? '#DDD6FE' : currentRole === 'admin' ? '#BFDBFE' : '#CBD5E1'}`
+              backgroundColor: currentRole === 'super_admin' ? '#F3E8FF' : currentRole === 'admin' ? '#EFF6FF' : currentRole === 'customer' ? '#F1F5F9' : '#FEF3C7',
+              color: currentRole === 'super_admin' ? '#7C3AED' : currentRole === 'admin' ? '#2563EB' : currentRole === 'customer' ? '#475569' : '#D97706',
+              border: `1px solid ${currentRole === 'super_admin' ? '#DDD6FE' : currentRole === 'admin' ? '#BFDBFE' : currentRole === 'customer' ? '#CBD5E1' : '#FDE68A'}`
             }}>
-              {currentRole === 'super_admin' ? '🛡️ Super Admin' : currentRole === 'admin' ? '⚙️ Admin' : currentRole === 'customer' ? '👤 Customer' : currentRole.replace('_', ' ')}
+              {currentRole === 'super_admin' ? '🛡️ Super Admin' : currentRole === 'admin' ? '⚙️ Admin' : currentRole === 'customer' ? '👤 Customer' : currentRole === 'catalog_manager' ? '📦 Catalog Mgr' : currentRole === 'inventory_manager' ? '🏭 Inventory Mgr' : '🌐 Guest'}
             </span>
-            <select
-              value={currentRole}
-              onChange={(e) => handleRoleChange(e.target.value)}
-              style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid var(--robu-border)',
-                borderRadius: 'var(--robu-radius-sm)',
-                padding: '2px 8px',
-                fontSize: '12px',
-                fontWeight: 500,
-                color: 'var(--robu-text-dark)',
-                cursor: 'pointer'
-              }}
-              title="Switch Active Account / Role (RBAC Demo)"
-            >
-              <option value="customer">👤 Customer (Satya Prakash - No Admin Access)</option>
-              <option value="admin">⚙️ Administrator (Arjun Mehta - Operations)</option>
-              <option value="super_admin">🛡️ Super Admin (Full Control + Audit + Users)</option>
-              <option value="catalog_manager">📦 Catalog Manager (Kavita Iyer)</option>
-              <option value="inventory_manager">🏭 Inventory Manager (Rohan Verma)</option>
-              <option value="guest">🌐 Guest Maker</option>
-            </select>
+            <span style={{ fontSize: '12px', color: '#1E1E24', fontWeight: 600 }}>
+              {user ? user.name : 'Guest User'}
+            </span>
           </div>
+
+          <span style={{ color: '#D1D5DB' }}>|</span>
 
           {/* GST State Selector */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <MapPin size={14} color="var(--robu-primary-orange)" />
+            <MapPin size={13} color="var(--robu-primary-orange)" />
             <select
               value={userState}
               onChange={(e) => dispatch(setUserState(e.target.value))}
               style={{
                 backgroundColor: '#FFFFFF',
-                border: '1px solid var(--robu-border)',
+                border: '1px solid #D1D5DB',
                 borderRadius: 'var(--robu-radius-sm)',
                 padding: '2px 8px',
-                fontSize: '12px',
+                fontSize: '11.5px',
                 fontWeight: 500,
-                color: 'var(--robu-text-dark)',
+                color: '#374151',
                 cursor: 'pointer'
               }}
               title="Select Delivery State for GST Recalculation"
@@ -127,26 +106,74 @@ export default function TopUtilityBar() {
             </select>
           </div>
 
-          {/* Sign In / User Profile */}
-          <button
-            onClick={() => dispatch(setAuthModalOpen(true))}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              backgroundColor: '#FFFFFF',
-              border: '1px solid var(--robu-border)',
-              borderRadius: 'var(--robu-radius-sm)',
-              padding: '2px 10px',
-              fontSize: '12px',
-              fontWeight: 600,
-              color: 'var(--robu-purple)',
-              cursor: 'pointer'
-            }}
-          >
-            <User size={13} />
-            <span>{user ? user.name.split(' ')[0] : 'Sign In'}</span>
-          </button>
+          <span style={{ color: '#D1D5DB' }}>|</span>
+
+          {/* Account Authentication Action Controls */}
+          {user && currentRole !== 'guest' ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <button
+                onClick={() => dispatch(setAuthModalOpen(true))}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #D1D5DB',
+                  borderRadius: 'var(--robu-radius-sm)',
+                  padding: '2px 8px',
+                  fontSize: '11.5px',
+                  fontWeight: 600,
+                  color: '#374151',
+                  cursor: 'pointer'
+                }}
+                title="Switch Account (Requires Login & Password)"
+              >
+                <Lock size={12} color="var(--robu-primary-purple)" />
+                <span>Switch</span>
+              </button>
+
+              <button
+                onClick={() => dispatch(logout())}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  backgroundColor: 'transparent',
+                  border: '1px solid #E5E7EB',
+                  borderRadius: 'var(--robu-radius-sm)',
+                  padding: '2px 8px',
+                  fontSize: '11.5px',
+                  fontWeight: 600,
+                  color: '#EF4444',
+                  cursor: 'pointer'
+                }}
+                title="Sign Out"
+              >
+                <LogOut size={12} />
+                <span>Sign Out</span>
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => dispatch(setAuthModalOpen(true))}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                backgroundColor: 'var(--robu-primary-purple)',
+                border: 'none',
+                borderRadius: 'var(--robu-radius-sm)',
+                padding: '3px 12px',
+                fontSize: '12px',
+                fontWeight: 700,
+                color: '#FFFFFF',
+                cursor: 'pointer'
+              }}
+            >
+              <User size={13} />
+              <span>Sign In</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -24,7 +24,14 @@ export default function BrandMarquee() {
     <section className="robu-container robu-section" style={{ overflow: 'hidden' }}>
       <div className="robu-section-header">
         <h2 className="robu-section-title">
-          <Award size={24} color="var(--robu-primary-orange)" />
+          <span style={{
+            display: 'inline-block',
+            width: '6px',
+            height: '24px',
+            backgroundColor: 'var(--robu-primary-orange)',
+            borderRadius: '3px',
+            marginRight: '4px'
+          }} />
           <span>Authorized Brand Partners</span>
         </h2>
         <span style={{ fontSize: '13px', color: 'var(--robu-text-muted)' }}>

@@ -1,44 +1,47 @@
 import React from 'react';
-import { Truck, Headphones, Award } from 'lucide-react';
+import { Truck, Headphones, Award, ShieldCheck } from 'lucide-react';
 
 const TRUST_ITEMS = [
   {
     id: 1,
     title: 'Same Day Shipping',
-    desc: 'Orders placed before 3:00 PM are dispatched on the same business day across India.',
+    desc: 'Orders placed before 4:00 PM are dispatched on the same day across India.',
     icon: Truck,
-    iconColor: 'var(--robu-primary-orange)'
+    accentColor: 'var(--robu-primary-orange)',
+    bgColor: '#FFF4EE'
   },
   {
     id: 2,
-    title: 'Dedicated Customer Service',
-    desc: 'Trained technical support from engineers to assist with wiring, firmware & troubleshooting.',
+    title: 'Dedicated Customer Support',
+    desc: 'Experienced engineers available Mon - Sat (9:00 AM - 6:00 PM) to help you.',
     icon: Headphones,
-    iconColor: 'var(--robu-purple)'
+    accentColor: 'var(--robu-primary-purple)',
+    bgColor: 'var(--robu-purple-light)'
   },
   {
     id: 3,
-    title: '140+ Authorized Brands',
-    desc: 'Direct distributor for Arduino, Raspberry Pi, Bambu Lab, Holybro, STMicro & DFRobot.',
+    title: '140+ Authorized Global Brands',
+    desc: '100% genuine components direct from Arduino, Raspberry Pi, Bambu Lab & more.',
     icon: Award,
-    iconColor: '#059669'
+    accentColor: '#059669',
+    bgColor: '#ECFDF5'
   }
 ];
 
 export default function TrustBadges() {
   return (
     <div style={{
-      backgroundColor: 'var(--robu-bg-top)',
-      borderTop: '1px solid var(--robu-border)',
-      borderBottom: '1px solid var(--robu-border)',
-      padding: '36px 0',
-      margin: '40px 0'
+      backgroundColor: '#FFFFFF',
+      borderTop: '1px solid var(--robu-border-card)',
+      borderBottom: '1px solid var(--robu-border-card)',
+      padding: '24px 0',
+      marginBottom: '32px'
     }}>
       <div className="robu-container">
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '24px'
+          gap: '20px'
         }}>
           {TRUST_ITEMS.map((item) => {
             const Icon = item.icon;
@@ -47,39 +50,39 @@ export default function TrustBadges() {
                 key={item.id}
                 style={{
                   display: 'flex',
-                  alignItems: 'flex-start',
+                  alignItems: 'center',
                   gap: '16px',
-                  backgroundColor: '#FFFFFF',
-                  padding: '20px 24px',
-                  borderRadius: '12px',
-                  border: '1px solid var(--robu-border)',
-                  boxShadow: 'var(--robu-shadow-sm)'
+                  padding: '16px 20px',
+                  borderRadius: '8px',
+                  backgroundColor: '#F8F9FA',
+                  border: '1px solid #EAEAEA',
+                  transition: 'all 0.2s ease'
                 }}
               >
                 <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '10px',
-                  backgroundColor: 'var(--robu-bg-top)',
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '50%',
+                  backgroundColor: item.bgColor,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: item.iconColor,
+                  color: item.accentColor,
                   flexShrink: 0
                 }}>
-                  <Icon size={24} />
+                  <Icon size={22} />
                 </div>
                 <div>
                   <div style={{
-                    fontSize: '16px',
+                    fontSize: '15px',
                     fontWeight: 700,
-                    color: 'var(--robu-text-heading)',
-                    marginBottom: '4px'
+                    color: 'var(--robu-text-dark)',
+                    marginBottom: '2px'
                   }}>
                     {item.title}
                   </div>
                   <div style={{
-                    fontSize: '13px',
+                    fontSize: '12px',
                     color: 'var(--robu-text-muted)',
                     lineHeight: '1.4'
                   }}>
@@ -94,3 +97,4 @@ export default function TrustBadges() {
     </div>
   );
 }
+
