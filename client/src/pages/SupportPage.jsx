@@ -54,27 +54,110 @@ export default function SupportPage() {
         </div>
 
         {/* Contact Info Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '32px' }}>
-          <div style={{ backgroundColor: '#FFFFFF', padding: '20px', borderRadius: '12px', border: '1px solid var(--robu-border)', textAlign: 'center', boxShadow: 'var(--robu-shadow-sm)' }}>
-            <PhoneCall size={24} color="var(--robu-primary-orange)" style={{ margin: '0 auto 8px' }} />
-            <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--robu-text-heading)' }}>Toll-Free Phone</div>
-            <div style={{ fontSize: '13px', color: 'var(--robu-text-muted)', marginTop: '4px' }}>+91 1800-419-ROBU</div>
-            <div style={{ fontSize: '11px', color: '#059669', marginTop: '4px' }}>Mon - Sat: 9 AM - 7 PM</div>
-          </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', marginBottom: '32px' }}>
+          {/* Toll Free Phone */}
+          <a 
+            href="tel:18002666123"
+            style={{ 
+              backgroundColor: '#FFFFFF', 
+              padding: '24px 20px', 
+              borderRadius: '12px', 
+              border: '1px solid var(--robu-border)', 
+              textAlign: 'center', 
+              boxShadow: 'var(--robu-shadow-sm)',
+              textDecoration: 'none',
+              display: 'block',
+              transition: 'transform 0.2s, box-shadow 0.2s'
+            }}
+            className="robu-card-lift"
+          >
+            <div style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              backgroundColor: '#FFF4EE',
+              color: 'var(--robu-primary-orange)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 12px'
+            }}>
+              <PhoneCall size={22} />
+            </div>
+            <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--robu-text-heading)' }}>Toll-Free Phone</div>
+            <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--robu-primary-orange)', marginTop: '4px' }}>1800 266 6123</div>
+            <div style={{ fontSize: '11.5px', color: '#059669', marginTop: '4px', fontWeight: 500 }}>Mon - Sat: 9 AM - 6 PM</div>
+          </a>
 
-          <div style={{ backgroundColor: '#FFFFFF', padding: '20px', borderRadius: '12px', border: '1px solid var(--robu-border)', textAlign: 'center', boxShadow: 'var(--robu-shadow-sm)' }}>
-            <Mail size={24} color="var(--robu-purple)" style={{ margin: '0 auto 8px' }} />
-            <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--robu-text-heading)' }}>Email Support</div>
-            <div style={{ fontSize: '13px', color: 'var(--robu-text-muted)', marginTop: '4px' }}>support@voltcart.in</div>
-            <div style={{ fontSize: '11px', color: 'var(--robu-text-muted)', marginTop: '4px' }}>Response within 2 hours</div>
-          </div>
+          {/* Email Support */}
+          <a 
+            href="mailto:support@robu.in"
+            style={{ 
+              backgroundColor: '#FFFFFF', 
+              padding: '24px 20px', 
+              borderRadius: '12px', 
+              border: '1px solid var(--robu-border)', 
+              textAlign: 'center', 
+              boxShadow: 'var(--robu-shadow-sm)',
+              textDecoration: 'none',
+              display: 'block',
+              transition: 'transform 0.2s, box-shadow 0.2s'
+            }}
+            className="robu-card-lift"
+          >
+            <div style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              backgroundColor: 'var(--robu-purple-light)',
+              color: 'var(--robu-primary-purple)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 12px'
+            }}>
+              <Mail size={22} />
+            </div>
+            <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--robu-text-heading)' }}>Email Support</div>
+            <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--robu-primary-purple)', marginTop: '4px' }}>support@robu.in</div>
+            <div style={{ fontSize: '11.5px', color: 'var(--robu-text-muted)', marginTop: '4px' }}>Response within 2 hours</div>
+          </a>
 
-          <div style={{ backgroundColor: '#FFFFFF', padding: '20px', borderRadius: '12px', border: '1px solid var(--robu-border)', textAlign: 'center', boxShadow: 'var(--robu-shadow-sm)' }}>
-            <MessageSquare size={24} color="#0284C7" style={{ margin: '0 auto 8px' }} />
-            <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--robu-text-heading)' }}>Live WhatsApp</div>
-            <div style={{ fontSize: '13px', color: 'var(--robu-text-muted)', marginTop: '4px' }}>+91 91234 56789</div>
-            <div style={{ fontSize: '11px', color: '#059669', marginTop: '4px' }}>Online Now</div>
-          </div>
+          {/* Live WhatsApp */}
+          <a 
+            href="https://wa.me/918448449850"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ 
+              backgroundColor: '#FFFFFF', 
+              padding: '24px 20px', 
+              borderRadius: '12px', 
+              border: '1px solid var(--robu-border)', 
+              textAlign: 'center', 
+              boxShadow: 'var(--robu-shadow-sm)',
+              textDecoration: 'none',
+              display: 'block',
+              transition: 'transform 0.2s, box-shadow 0.2s'
+            }}
+            className="robu-card-lift"
+          >
+            <div style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              backgroundColor: '#E0F2FE',
+              color: '#0284C7',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 12px'
+            }}>
+              <MessageSquare size={22} />
+            </div>
+            <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--robu-text-heading)' }}>Live WhatsApp</div>
+            <div style={{ fontSize: '14px', fontWeight: 600, color: '#0284C7', marginTop: '4px' }}>+91 84484 49850</div>
+            <div style={{ fontSize: '11.5px', color: '#059669', marginTop: '4px', fontWeight: 500 }}>Online Now</div>
+          </a>
         </div>
 
         {submitted ? (
