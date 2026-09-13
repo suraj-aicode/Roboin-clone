@@ -71,7 +71,7 @@ export default function OurServicesSection() {
             borderRadius: '3px',
             marginRight: '4px'
           }} />
-          <span>Robu On-Demand Custom Services</span>
+          <span>VoltCart On-Demand Custom Services</span>
         </h2>
         <button
           onClick={() => dispatch(setRFQModalOpen(true))}

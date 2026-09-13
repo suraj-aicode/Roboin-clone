@@ -7,7 +7,7 @@ const initialState = {
       orderNumber: 'ORD-2026-8941',
       createdAt: new Date(Date.now() - 48 * 3600 * 1000).toISOString(),
       customerName: 'Satya Prakash (Maker Systems)',
-      customerEmail: 'customer@robo.in',
+      customerEmail: 'customer@voltcart.in',
       customerPhone: '+91 98888 12345',
       gstin: '29AAACB9812R1Z5',
       status: 'Delivered',

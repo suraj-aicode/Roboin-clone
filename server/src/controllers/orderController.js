@@ -75,7 +75,7 @@ exports.createOrder = async (req, res) => {
           product: item.productId || 'item-unknown',
           productId: String(item.productId || ''),
           sku: item.sku || `SKU-${item.productId || 'UNKNOWN'}`,
-          title: item.title || 'RoboTech Component',
+          title: item.title || 'VoltCart Component',
           hsnCode: item.hsnCode || '85423190',
           price,
           quantity: item.quantity,

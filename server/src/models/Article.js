@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const ArticleSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   slug: { type: String, required: true, unique: true, lowercase: true },
-  author: { type: String, required: true, default: 'RoboTech Research Team' },
+  author: { type: String, required: true, default: 'VoltCart Research Team' },
   category: { 
     type: String, 
     enum: ['Robotics & Autonomous Systems', 'Embedded Firmware & RTOS', 'Hardware Benchmarks', 'IoT & Telemetry'],

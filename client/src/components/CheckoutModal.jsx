@@ -20,7 +20,7 @@ export default function CheckoutModal() {
 
   const [formData, setFormData] = useState({
     name: user?.name || 'Satya Prakash (Maker Systems)',
-    email: user?.email || 'customer@robo.in',
+    email: user?.email || 'customer@voltcart.in',
     phone: '+91 98888 12345',
     street: 'Plot 42, Electronic City Phase 1',
     city: 'Bengaluru',

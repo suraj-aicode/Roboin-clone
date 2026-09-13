@@ -10,7 +10,7 @@ export default function ReturnModal() {
 
   const [orderNumber, setOrderNumber] = useState(selectedOrderForReturn?.orderNumber || 'ORD-2026-8941');
   const [customerName, setCustomerName] = useState(user?.name || 'Satya Prakash');
-  const [customerEmail, setCustomerEmail] = useState(user?.email || 'customer@robo.in');
+  const [customerEmail, setCustomerEmail] = useState(user?.email || 'customer@voltcart.in');
   const [sku, setSku] = useState('SKU-ARD-R4-WIFI');
   const [productTitle, setProductTitle] = useState('Arduino Uno R4 WiFi Board');
   const [returnType, setReturnType] = useState('Replacement');

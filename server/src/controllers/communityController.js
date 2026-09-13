@@ -57,8 +57,8 @@ exports.createQuestion = async (req, res) => {
       sku,
       question,
       askedBy,
-      answer: 'Thank you for your question. A RoboTech hardware specialist will verify the datasheet specifications and reply shortly.',
-      answeredBy: 'RoboTech Tech Support',
+      answer: 'Thank you for your question. A VoltCart hardware specialist will verify the datasheet specifications and reply shortly.',
+      answeredBy: 'VoltCart Tech Support',
       status: 'Answered'
     });
     res.status(201).json({ success: true, data: qa });

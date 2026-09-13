@@ -172,11 +172,11 @@ export async function openRealRazorpayCheckout({
       contact: customer.phone || ''
     },
     notes: {
-      merchant: 'RoboTech Logistics Bangalore',
+      merchant: 'VoltCart Logistics Bangalore',
       gstCompliance: 'Active 18%'
     },
     theme: {
-      color: '#EF4123' // Robu.in brand color
+      color: '#EF4123' // VoltCart brand color
     },
     modal: {
       ondismiss: function () {

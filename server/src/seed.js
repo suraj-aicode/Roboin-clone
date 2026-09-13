@@ -25,37 +25,37 @@ const seedDatabase = async () => {
     const users = await User.create([
       {
         name: 'Super Admin',
-        email: 'admin@robo.in',
+        email: 'admin@voltcart.in',
         password: 'AdminPassword123!',
         role: 'super_admin',
-        organization: 'RoboTech HQ',
+        organization: 'VoltCart HQ',
         gstin: '29AAACR9981K1Z3'
       },
       {
         name: 'Kavita Iyer (Catalog)',
-        email: 'catalog@robo.in',
+        email: 'catalog@voltcart.in',
         password: 'CatalogPassword123!',
         role: 'catalog_manager',
-        organization: 'RoboTech Logistics'
+        organization: 'VoltCart Logistics'
       },
       {
         name: 'Rohan Verma (Inventory)',
-        email: 'inventory@robo.in',
+        email: 'inventory@voltcart.in',
         password: 'InventoryPassword123!',
         role: 'inventory_manager',
-        organization: 'RoboTech WH-BLR-01'
+        organization: 'VoltCart WH-BLR-01'
       },
       {
         name: 'Arjun Mehta (Admin)',
-        email: 'admin.ops@robo.in',
+        email: 'admin.ops@voltcart.in',
         password: 'AdminPassword123!',
         role: 'admin',
-        organization: 'RoboTech Operations HQ',
+        organization: 'VoltCart Operations HQ',
         gstin: '29AAACR9981K1Z3'
       },
       {
         name: 'Satya Prakash (Maker Customer)',
-        email: 'customer@robo.in',
+        email: 'customer@voltcart.in',
         password: 'CustomerPassword123!',
         role: 'customer',
         organization: 'Apex Robotics Lab',
@@ -256,7 +256,7 @@ const seedDatabase = async () => {
       orderNumber: 'ORD-2026-8941',
       customer: users[3]._id,
       customerName: 'Satya Prakash (Apex Robotics Lab)',
-      customerEmail: 'customer@robo.in',
+      customerEmail: 'customer@voltcart.in',
       customerPhone: '+91 98888 12345',
       gstin: '29AAACB9812R1Z5',
       shippingAddress: {

@@ -20,7 +20,7 @@ export default function InvoiceModal() {
         <div className="invoice-box">
           <div className="invoice-header">
             <div>
-              <div className="invoice-logo">RoboTech Electronics</div>
+              <div className="invoice-logo">VoltCart Electronics</div>
               <div style={{ fontSize: '0.78rem', color: '#4B5563' }}>
                 GSTIN: <strong>29AAACR9981K1Z3</strong> | Authorized GST Tax Invoice
               </div>

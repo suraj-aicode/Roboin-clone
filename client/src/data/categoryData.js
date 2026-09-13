@@ -1256,7 +1256,7 @@ export const CATEGORIES_METADATA = {
       'Quadcopter Drone DIY Assembly Stacks',
       'Solar & Renewable Energy Science Projects'
     ],
-    brands: ['RoboTech MakerLab', 'Keyestudio', 'Elegoo', 'SunFounder', 'DFRobot', 'DIYables'],
+    brands: ['VoltCart MakerLab', 'Keyestudio', 'Elegoo', 'SunFounder', 'DFRobot', 'DIYables'],
     guide: {
       title: 'Maker Project Starter Roadmap',
       text: 'For complete beginners, start with an Arduino Master Learning Kit featuring breadboards, LEDs, ultrasonic sensors, and LCDs to master embedded C++ fundamentals. For mechatronics and kinematics, build a 4WD Smart Car kit incorporating dual H-bridge motor drivers, optical encoders, and Bluetooth smartphone telemetry.'
@@ -1268,7 +1268,7 @@ export const CATEGORIES_METADATA = {
         sku: 'SKU-KIT-ARD-ADV-45',
         category: 'diy-kits',
         subcategory: 'Complete Arduino Educational Starter Kits',
-        brand: 'RoboTech MakerLab',
+        brand: 'VoltCart MakerLab',
         price: 1899,
         gstRate: 0.18,
         hsnCode: '90230090',
@@ -1355,7 +1355,7 @@ export const CATEGORIES_METADATA = {
         sku: 'SKU-KIT-IOT-AGRI-ESP32',
         category: 'diy-kits',
         subcategory: 'IoT Smart Home & Agriculture Automation Kits',
-        brand: 'RoboTech MakerLab',
+        brand: 'VoltCart MakerLab',
         price: 2199,
         gstRate: 0.18,
         hsnCode: '90258000',

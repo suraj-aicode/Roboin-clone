@@ -58,14 +58,14 @@ export default function CartDrawer() {
     const code = (codeToApply || couponCode).trim().toUpperCase();
     if (!code) return;
 
-    if (code === 'ROBO10') {
+    if (code === 'VOLT10' || code === 'ROBO10') {
       if (subtotal < 500) {
-        setCouponError('ROBO10 requires minimum order value of ₹500');
+        setCouponError('VOLT10 requires minimum order value of ₹500');
         return;
       }
-      dispatch(applyCoupon({ code: 'ROBO10', type: 'percentage', value: 0.10, desc: '10% Instant Maker Discount' }));
+      dispatch(applyCoupon({ code, type: 'percentage', value: 0.10, desc: '10% Instant Maker Discount' }));
       setCouponError('');
-      setCouponCode('ROBO10');
+      setCouponCode(code);
     } else if (code === 'FREESHIP') {
       dispatch(applyCoupon({ code: 'FREESHIP', type: 'shipping', value: 99, desc: 'Free Delhivery Express Shipping' }));
       setCouponError('');
@@ -79,7 +79,7 @@ export default function CartDrawer() {
       setCouponError('');
       setCouponCode('MAKER500');
     } else {
-      setCouponError('Invalid coupon code. Try ROBO10, FREESHIP or MAKER500');
+      setCouponError('Invalid coupon code. Try VOLT10, FREESHIP or MAKER500');
     }
   };
 
@@ -117,7 +117,7 @@ export default function CartDrawer() {
                   </span>
                 )}
               </div>
-              <span style={{ fontSize: '11px', color: '#64748B' }}>Robu Certified Hardware</span>
+              <span style={{ fontSize: '11px', color: '#64748B' }}>VoltCart Certified Hardware</span>
             </div>
           </div>
 
@@ -391,7 +391,7 @@ export default function CartDrawer() {
               {/* Quick Chip Coupons */}
               <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                 {[
-                  { code: 'ROBO10', label: '10% OFF' },
+                  { code: 'VOLT10', label: '10% OFF' },
                   { code: 'FREESHIP', label: 'Free Ship' },
                   { code: 'MAKER500', label: '₹500 OFF' }
                 ].map((c) => (

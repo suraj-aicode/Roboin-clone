@@ -28,7 +28,7 @@ const SHIPMENT_RECORDS = [
       { status: 'Out for Delivery', location: 'Electronic City Delivery Hub', timestamp: '2026-03-02 09:15' },
       { status: 'In Transit', location: 'Bengaluru Central Sort Center', timestamp: '2026-03-01 22:40' },
       { status: 'Package Picked Up', location: 'WH-BLR-01 Robotics Hub', timestamp: '2026-03-01 16:30' },
-      { status: 'Order Manifest Generated', location: 'RoboTech Fulfillment System', timestamp: '2026-03-01 11:00' }
+      { status: 'Order Manifest Generated', location: 'VoltCart Fulfillment System', timestamp: '2026-03-01 11:00' }
     ]
   },
   {
@@ -43,7 +43,7 @@ const SHIPMENT_RECORDS = [
       { status: 'In Transit', location: 'BOM Gateway Air Hub, Mumbai', timestamp: '2026-03-05 10:15' },
       { status: 'Dispatched via Air Freight', location: 'Kempegowda Airport Hub, BLR', timestamp: '2026-03-04 21:00' },
       { status: 'Package Picked Up', location: 'WH-BLR-01 Robotics Hub', timestamp: '2026-03-04 15:45' },
-      { status: 'Order Manifest Generated', location: 'RoboTech Fulfillment System', timestamp: '2026-03-04 12:30' }
+      { status: 'Order Manifest Generated', location: 'VoltCart Fulfillment System', timestamp: '2026-03-04 12:30' }
     ]
   }
 ];
@@ -112,7 +112,7 @@ router.get('/track/:awb', (req, res) => {
     milestones: [
       { status: 'In Transit', location: 'Regional Gateway Sort Hub', timestamp: new Date().toLocaleTimeString() },
       { status: 'Package Picked Up', location: 'WH-BLR-01 Robotics Hub', timestamp: 'Earlier Today' },
-      { status: 'Order Manifest Generated', location: 'RoboTech Fulfillment System', timestamp: 'Order Placed' }
+      { status: 'Order Manifest Generated', location: 'VoltCart Fulfillment System', timestamp: 'Order Placed' }
     ]
   };
 

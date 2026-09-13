@@ -9,7 +9,7 @@ export default function SupportTicketModal() {
   const { user } = useSelector((state) => state.auth);
 
   const [name, setName] = useState(user?.name || 'Satya Prakash');
-  const [email, setEmail] = useState(user?.email || 'customer@robo.in');
+  const [email, setEmail] = useState(user?.email || 'customer@voltcart.in');
   const [category, setCategory] = useState('Technical Hardware Support');
   const [priority, setPriority] = useState('Medium');
   const [orderNumber, setOrderNumber] = useState('ORD-2026-8941');

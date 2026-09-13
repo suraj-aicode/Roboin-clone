@@ -3,36 +3,36 @@ import { createSlice } from '@reduxjs/toolkit';
 export const DEMO_ACCOUNTS = {
   super_admin: {
     name: 'Super Admin',
-    email: 'admin@robo.in',
+    email: 'admin@voltcart.in',
     role: 'super_admin',
-    organization: 'RoboTech HQ',
+    organization: 'VoltCart HQ',
     gstin: '29AAACR9981K1Z3'
   },
   admin: {
     name: 'Arjun Mehta (Admin)',
-    email: 'admin.ops@robo.in',
+    email: 'admin.ops@voltcart.in',
     role: 'admin',
-    organization: 'RoboTech Operations HQ',
+    organization: 'VoltCart Operations HQ',
     gstin: '29AAACR9981K1Z3'
   },
   customer: {
     name: 'Satya Prakash (Maker Customer)',
-    email: 'customer@robo.in',
+    email: 'customer@voltcart.in',
     role: 'customer',
     organization: 'Apex Robotics Lab',
     gstin: '29AAACB9812R1Z5'
   },
   catalog_manager: {
     name: 'Kavita Iyer (Catalog)',
-    email: 'catalog@robo.in',
+    email: 'catalog@voltcart.in',
     role: 'catalog_manager',
-    organization: 'RoboTech Logistics'
+    organization: 'VoltCart Logistics'
   },
   inventory_manager: {
     name: 'Rohan Verma (Inventory)',
-    email: 'inventory@robo.in',
+    email: 'inventory@voltcart.in',
     role: 'inventory_manager',
-    organization: 'RoboTech WH-BLR-01'
+    organization: 'VoltCart WH-BLR-01'
   },
   guest: {
     name: 'Guest Maker',

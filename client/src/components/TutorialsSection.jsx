@@ -57,7 +57,7 @@ export default function TutorialsSection() {
             borderRadius: '3px',
             marginRight: '4px'
           }} />
-          <span>Robu Two-Minute Tutorials</span>
+          <span>VoltCart Two-Minute Tutorials</span>
         </h2>
         <button
           onClick={() => dispatch(setTutorialsModalOpen(true))}

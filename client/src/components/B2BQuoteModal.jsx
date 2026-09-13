@@ -10,7 +10,7 @@ export default function B2BQuoteModal() {
 
   const [orgName, setOrgName] = useState(user?.organization || 'Apex Robotics Research Lab');
   const [contactName, setContactName] = useState(user?.name || 'Satya Prakash');
-  const [email, setEmail] = useState(user?.email || 'customer@robo.in');
+  const [email, setEmail] = useState(user?.email || 'customer@voltcart.in');
   const [phone, setPhone] = useState('+91 98888 12345');
   const [gstin, setGstin] = useState(user?.gstin || '29AAACB9812R1Z5');
   const [quantity, setQuantity] = useState(25);

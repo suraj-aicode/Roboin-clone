@@ -39,7 +39,7 @@ export default function AnalyticsBI() {
       o.courierPartner || 'Delhivery',
       o.awb || ''
     ])];
-    exportToCSV(`RoboTech_Sales_Report_${new Date().toISOString().slice(0,10)}.csv`, rows);
+    exportToCSV(`VoltCart_Sales_Report_${new Date().toISOString().slice(0,10)}.csv`, rows);
   };
 
   const handleExportGSTR1 = () => {
@@ -61,7 +61,7 @@ export default function AnalyticsBI() {
         Number(o.totalAmount).toFixed(2)
       ];
     })];
-    exportToCSV(`RoboTech_GSTR1_Tax_Report_${new Date().toISOString().slice(0,10)}.csv`, rows);
+    exportToCSV(`VoltCart_GSTR1_Tax_Report_${new Date().toISOString().slice(0,10)}.csv`, rows);
   };
 
   const handleExportInventory = () => {
@@ -81,7 +81,7 @@ export default function AnalyticsBI() {
         assetVal
       ];
     })];
-    exportToCSV(`RoboTech_Warehouse_Valuation_${new Date().toISOString().slice(0,10)}.csv`, rows);
+    exportToCSV(`VoltCart_Warehouse_Valuation_${new Date().toISOString().slice(0,10)}.csv`, rows);
   };
 
   const monthlyData = [

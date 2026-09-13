@@ -32,7 +32,7 @@ const initialQAs = [
     question: 'Can I power the Uno R4 WiFi directly with a 12V LiPo battery pack via VIN pin?',
     askedBy: 'Rohit K.',
     answer: 'Yes, absolutely! The on-board buck regulator on Uno R4 WiFi supports an input voltage range of 6V to 24V DC on the VIN pin and DC barrel jack.',
-    answeredBy: 'RoboTech Senior Hardware Specialist'
+    answeredBy: 'VoltCart Senior Hardware Specialist'
   },
   {
     _id: 'qa-02',
@@ -49,7 +49,7 @@ const initialTickets = [
     _id: 'tck-01',
     ticketId: 'TCK-2026-4412',
     customerName: 'Satya Prakash (Maker Systems)',
-    customerEmail: 'customer@robo.in',
+    customerEmail: 'customer@voltcart.in',
     category: 'Technical Hardware Support',
     priority: 'High',
     subject: 'I2C pull-up resistor calculation on ESP32 with 5V sensor',

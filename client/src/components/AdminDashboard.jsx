@@ -85,7 +85,7 @@ export default function AdminDashboard() {
   const [coupons, setCoupons] = useState([
     {
       _id: 'cpn-001',
-      code: 'ROBO10',
+      code: 'VOLT10',
       discountType: 'percentage',
       value: 0.10,
       minOrderAmount: 500,
@@ -205,7 +205,7 @@ export default function AdminDashboard() {
     {
       id: 'MKT-01',
       name: 'Autumn Maker Blitz (10% Off)',
-      code: 'ROBO10',
+      code: 'VOLT10',
       type: 'Discount Coupon',
       clicks: 1420,
       redemptions: 42,
@@ -236,43 +236,43 @@ export default function AdminDashboard() {
     {
       id: 'USR-01',
       name: 'Super Admin',
-      email: 'admin@robo.in',
+      email: 'admin@voltcart.in',
       role: 'super_admin',
-      organization: 'RoboTech HQ',
+      organization: 'VoltCart HQ',
       status: 'Active',
       lastLogin: 'Today, 11:30 AM'
     },
     {
       id: 'USR-02',
       name: 'Arjun Mehta (Admin)',
-      email: 'admin.ops@robo.in',
+      email: 'admin.ops@voltcart.in',
       role: 'admin',
-      organization: 'RoboTech Operations HQ',
+      organization: 'VoltCart Operations HQ',
       status: 'Active',
       lastLogin: 'Today, 10:15 AM'
     },
     {
       id: 'USR-03',
       name: 'Kavita Iyer (Catalog)',
-      email: 'catalog@robo.in',
+      email: 'catalog@voltcart.in',
       role: 'catalog_manager',
-      organization: 'RoboTech Logistics',
+      organization: 'VoltCart Logistics',
       status: 'Active',
       lastLogin: 'Yesterday'
     },
     {
       id: 'USR-04',
       name: 'Rohan Verma (Inventory)',
-      email: 'inventory@robo.in',
+      email: 'inventory@voltcart.in',
       role: 'inventory_manager',
-      organization: 'RoboTech WH-BLR-01',
+      organization: 'VoltCart WH-BLR-01',
       status: 'Active',
       lastLogin: '2 days ago'
     },
     {
       id: 'USR-05',
       name: 'Satya Prakash (Maker Customer)',
-      email: 'customer@robo.in',
+      email: 'customer@voltcart.in',
       role: 'customer',
       organization: 'Apex Robotics Lab',
       status: 'Active',

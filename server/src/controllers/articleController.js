@@ -6,7 +6,7 @@ const INITIAL_ARTICLES = [
   {
     title: 'Building an Autonomous ROS2 Rover with Raspberry Pi 5 & LiDAR',
     slug: 'autonomous-ros2-rover-raspberry-pi-5',
-    author: 'Dr. Anita Nair (RoboTech Robotics Fellow)',
+    author: 'Dr. Anita Nair (VoltCart Robotics Fellow)',
     category: 'Robotics & Autonomous Systems',
     readTime: '12 min read',
     coverImage: 'assets/images/raspberry_pi_5.jpg',
@@ -49,7 +49,7 @@ The ESP32 features two Xtensa LX6 cores: Core 0 handles the Wi-Fi and Bluetooth 
   {
     title: 'Arduino Uno R4 WiFi vs ESP32: Processing Speed & Pinout Benchmarks',
     slug: 'arduino-uno-r4-wifi-vs-esp32-benchmark',
-    author: 'RoboTech Research Team',
+    author: 'VoltCart Research Team',
     category: 'Hardware Benchmarks',
     readTime: '7 min read',
     coverImage: 'assets/images/arduino_uno_r4.jpg',
@@ -104,7 +104,7 @@ exports.createArticle = async (req, res) => {
     const article = await Article.create({
       title,
       slug,
-      author: author || 'RoboTech Staff Engineer',
+      author: author || 'VoltCart Staff Engineer',
       category: category || 'Robotics & Autonomous Systems',
       readTime: readTime || '10 min read',
       coverImage: coverImage || 'assets/images/arduino_uno_r4.jpg',

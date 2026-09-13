@@ -5,7 +5,7 @@ import { API_URL } from '../config/api';
 export default function ArticleEditorModal({ isOpen, onClose, onArticleCreated }) {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('Robotics & Autonomous Systems');
-  const [author, setAuthor] = useState('RoboTech Research Team');
+  const [author, setAuthor] = useState('VoltCart Research Team');
   const [readTime, setReadTime] = useState('8 min read');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');

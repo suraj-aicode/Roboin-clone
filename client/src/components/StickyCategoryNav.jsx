@@ -335,7 +335,7 @@ export default function StickyCategoryNav() {
           }}
         >
           <Store size={15} />
-          <span>Sell on Robu</span>
+          <span>Sell on VoltCart</span>
         </button>
       </div>
 

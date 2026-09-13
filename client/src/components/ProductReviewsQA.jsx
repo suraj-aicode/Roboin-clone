@@ -53,7 +53,7 @@ export default function ProductReviewsQA({ product }) {
       question: questionText,
       askedBy: user?.name || 'Maker Engineer',
       answer: 'Our senior robotics hardware engineer will verify the datasheet specifications and reply to your question within 4 hours.',
-      answeredBy: 'RoboTech Technical Support',
+      answeredBy: 'VoltCart Technical Support',
       createdAt: new Date().toISOString()
     }));
 

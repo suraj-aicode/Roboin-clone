@@ -30,7 +30,7 @@ async function sendTicketEmail({ ticketId, customerName, customerEmail, phone, c
 
     // 1. Send alert email to suraj40praj@gmail.com
     const adminMailOptions = {
-      from: `"Robu Support Portal" <${emailUser}>`,
+      from: `"VoltCart Support Portal" <${emailUser}>`,
       to: adminEmail,
       subject: `[New Support Ticket ${ticketId}] ${subject}`,
       html: `
@@ -53,7 +53,7 @@ async function sendTicketEmail({ ticketId, customerName, customerEmail, phone, c
             <p style="margin: 0; color: #374151; white-space: pre-wrap; font-size: 13.5px;">${description}</p>
           </div>
 
-          <p style="font-size: 11.5px; color: #9CA3AF; margin-top: 24px;">This message was dispatched automatically by Robu.in Support System.</p>
+          <p style="font-size: 11.5px; color: #9CA3AF; margin-top: 24px;">This message was dispatched automatically by VoltCart Support System.</p>
         </div>
       `
     };
@@ -65,16 +65,16 @@ async function sendTicketEmail({ ticketId, customerName, customerEmail, phone, c
     if (customerEmail && customerEmail.includes('@')) {
       try {
         await transporter.sendMail({
-          from: `"Robu Support" <${emailUser}>`,
+          from: `"VoltCart Support" <${emailUser}>`,
           to: customerEmail,
           subject: `[Received] Your Support Ticket #${ticketId}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 20px;">
               <h3 style="color: #380680;">We've received your request!</h3>
               <p>Hi ${customerName},</p>
-              <p>Thank you for reaching out to Robu Support. Your ticket has been logged with reference <strong>#${ticketId}</strong>.</p>
+              <p>Thank you for reaching out to VoltCart Support. Your ticket has been logged with reference <strong>#${ticketId}</strong>.</p>
               <p>Our electronics engineering team will review your query ("<em>${subject}</em>") and respond to you shortly.</p>
-              <p style="margin-top: 20px; font-size: 12px; color: #6B7280;">Robu.in Customer Support Team</p>
+              <p style="margin-top: 20px; font-size: 12px; color: #6B7280;">VoltCart Customer Support Team</p>
             </div>
           `
         });

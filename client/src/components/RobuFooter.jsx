@@ -60,7 +60,7 @@ export default function RobuFooter() {
               color: 'var(--robu-primary-orange)',
               marginBottom: '4px'
             }}>
-              Stay Updated with Robu
+              Stay Updated with VoltCart
             </div>
             <h3 style={{
               fontSize: '22px',
@@ -89,7 +89,7 @@ export default function RobuFooter() {
               border: '1px solid rgba(16, 185, 129, 0.3)'
             }}>
               <CheckCircle2 size={20} />
-              <span>Thank you! Welcome to the Robu.in community.</span>
+              <span>Thank you! Welcome to the VoltCart community.</span>
             </div>
           ) : (
             <form 
@@ -168,7 +168,7 @@ export default function RobuFooter() {
           gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
           gap: '36px'
         }}>
-          {/* Col 1: Official Robu / Macfos Ltd Corporate Identity */}
+          {/* Col 1: Official VoltCart Corporate Identity */}
           <div style={{ gridColumn: 'span 1' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
               <div style={{
@@ -185,11 +185,11 @@ export default function RobuFooter() {
                 fontFamily: 'var(--font-robu-heading)',
                 boxShadow: '0 2px 8px rgba(243, 108, 33, 0.4)'
               }}>
-                r
+                V
               </div>
               <div>
                 <span style={{ fontWeight: 900, fontSize: '22px', letterSpacing: '0.5px', color: '#FFFFFF' }}>
-                  ROBU<span style={{ color: 'var(--robu-primary-orange)' }}>.IN</span>
+                  VOLT<span style={{ color: 'var(--robu-primary-orange)' }}>CART</span>
                 </span>
                 <div style={{ fontSize: '10.5px', color: '#9CA3AF', letterSpacing: '0.4px', fontWeight: 600, textTransform: 'uppercase' }}>
                   Your Ideas, Our Parts
@@ -198,7 +198,7 @@ export default function RobuFooter() {
             </div>
 
             <p style={{ fontSize: '13px', color: '#9CA3AF', lineHeight: '1.6', marginBottom: '18px' }}>
-              Macfos Limited (Robu.in) is India's leading distributor & online portal for robotics hardware, DIY electronics, 3D printing equipment, IoT sensors, and mechanical assemblies.
+              VoltCart Technologies Pvt Ltd (VoltCart) is India's leading distributor & online portal for robotics hardware, DIY electronics, 3D printing equipment, IoT sensors, and mechanical assemblies.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13px', color: '#D1D5DB' }}>
@@ -216,7 +216,7 @@ export default function RobuFooter() {
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <MapPin size={16} color="#9CA3AF" style={{ marginTop: '3px', flexShrink: 0 }} />
-                <span style={{ lineHeight: '1.4' }}>Macfos Limited, S. No. 34, Katraj-Dehu Road Bypass, Ambegaon BK, Pune - 411046, Maharashtra, India.</span>
+                <span style={{ lineHeight: '1.4' }}>VoltCart Technologies Pvt Ltd, S. No. 34, Katraj-Dehu Road Bypass, Ambegaon BK, Pune - 411046, Maharashtra, India.</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px', color: '#6B7280' }}>
                 <FileText size={15} color="#6B7280" />
@@ -227,10 +227,10 @@ export default function RobuFooter() {
             {/* Social Media Links */}
             <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
               {[
-                { name: 'Facebook', href: 'https://facebook.com/robu.in', color: '#1877F2', path: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' },
-                { name: 'X / Twitter', href: 'https://twitter.com/robu_in', color: '#E5E7EB', path: 'M4 4l16 16M4 20L20 4' },
-                { name: 'LinkedIn', href: 'https://linkedin.com/company/robu-in', color: '#0A66C2', path: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z' },
-                { name: 'YouTube', href: 'https://youtube.com/robu_in', color: '#FF0000', path: 'M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z' }
+                { name: 'Facebook', href: 'https://facebook.com/voltcart', color: '#1877F2', path: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' },
+                { name: 'X / Twitter', href: 'https://twitter.com/voltcart', color: '#E5E7EB', path: 'M4 4l16 16M4 20L20 4' },
+                { name: 'LinkedIn', href: 'https://linkedin.com/company/voltcart', color: '#0A66C2', path: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z' },
+                { name: 'YouTube', href: 'https://youtube.com/voltcart', color: '#FF0000', path: 'M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z' }
               ].map((s, i) => (
                 <a
                   key={i}
@@ -273,13 +273,13 @@ export default function RobuFooter() {
               Information
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13.5px' }}>
-              <li><Link to="/" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>About Robu.in</Link></li>
+              <li><Link to="/" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>About VoltCart</Link></li>
               <li><Link to="/support" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>Contact Customer Support</Link></li>
               <li><Link to="/b2b-quote" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>Bulk & Institution Quotes</Link></li>
               <li><Link to="/tutorials" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>Blogs & 2-Minute Tutorials</Link></li>
               <li><Link to="/category/microcontrollers" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>Development Boards & Kits</Link></li>
               <li><Link to="/category/drone-parts" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>Drone Motors & ESCs</Link></li>
-              <li><a href="#investor" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>Investor Relations (Macfos Ltd)</a></li>
+              <li><a href="#investor" style={{ color: '#9CA3AF' }} onMouseEnter={(e) => e.target.style.color = '#FFFFFF'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>Investor Relations (VoltCart Technologies)</a></li>
             </ul>
           </div>
 
@@ -346,7 +346,7 @@ export default function RobuFooter() {
           gap: '16px'
         }}>
           <div>
-            © 2026 Macfos Limited (Robu.in). All rights reserved. Registered under Companies Act, 2013.
+            © 2026 VoltCart Technologies Pvt Ltd (VoltCart). All rights reserved. Registered under Companies Act, 2013.
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>

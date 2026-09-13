@@ -85,11 +85,11 @@ export default function AuthModal() {
     } catch {
       // Local fallback verification requiring exact password match
       const DEMO_CREDENTIALS = {
-        'admin@robo.in': { password: 'AdminPassword123!', account: DEMO_ACCOUNTS.super_admin },
-        'admin.ops@robo.in': { password: 'AdminPassword123!', account: DEMO_ACCOUNTS.admin },
-        'catalog@robo.in': { password: 'CatalogPassword123!', account: DEMO_ACCOUNTS.catalog_manager },
-        'inventory@robo.in': { password: 'InventoryPassword123!', account: DEMO_ACCOUNTS.inventory_manager },
-        'customer@robo.in': { password: 'CustomerPassword123!', account: DEMO_ACCOUNTS.customer }
+        'admin@voltcart.in': { password: 'AdminPassword123!', account: DEMO_ACCOUNTS.super_admin },
+        'admin.ops@voltcart.in': { password: 'AdminPassword123!', account: DEMO_ACCOUNTS.admin },
+        'catalog@voltcart.in': { password: 'CatalogPassword123!', account: DEMO_ACCOUNTS.catalog_manager },
+        'inventory@voltcart.in': { password: 'InventoryPassword123!', account: DEMO_ACCOUNTS.inventory_manager },
+        'customer@voltcart.in': { password: 'CustomerPassword123!', account: DEMO_ACCOUNTS.customer }
       };
 
       const normalizedEmail = formData.email ? formData.email.trim().toLowerCase() : '';
@@ -162,7 +162,7 @@ export default function AuthModal() {
             <KeyRound size={28} />
           </div>
           <h2 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-main)' }}>
-            {authMode === 'login' && 'Sign In to RoboTech'}
+            {authMode === 'login' && 'Sign In to VoltCart'}
             {authMode === 'register' && 'Create Maker Account'}
             {authMode === 'forgot' && 'Reset Password (OTP)'}
           </h2>

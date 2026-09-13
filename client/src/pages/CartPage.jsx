@@ -59,20 +59,20 @@ export default function CartPage() {
     const code = (codeToApply || couponCode).trim().toUpperCase();
     if (!code) return;
 
-    if (code === 'ROBO10') {
+    if (code === 'VOLT10' || code === 'ROBO10') {
       if (subtotal < 500) {
-        setCouponError('ROBO10 requires minimum order value of ₹500');
+        setCouponError('VOLT10 requires minimum order value of ₹500');
         return;
       }
-      dispatch(applyCoupon({ code: 'ROBO10', type: 'percentage', value: 0.10, desc: '10% Instant Maker Discount' }));
+      dispatch(applyCoupon({ code, type: 'percentage', value: 0.10, desc: '10% Instant Maker Discount' }));
       setCouponError('');
-      setCouponCode('ROBO10');
+      setCouponCode(code);
     } else if (code === 'FREESHIP') {
       dispatch(applyCoupon({ code: 'FREESHIP', type: 'shipping', value: 99, desc: 'Free Delhivery Express Shipping' }));
       setCouponError('');
       setCouponCode('FREESHIP');
     } else {
-      setCouponError('Invalid coupon code. Try ROBO10 or FREESHIP');
+      setCouponError('Invalid coupon code. Try VOLT10 or FREESHIP');
     }
   };
 
@@ -423,7 +423,7 @@ export default function CartPage() {
                 {/* Recommended Coupons */}
                 <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
                   <button 
-                    onClick={() => handleApplyCoupon('ROBO10')}
+                    onClick={() => handleApplyCoupon('VOLT10')}
                     style={{
                       flex: 1,
                       padding: '6px 8px',
@@ -436,7 +436,7 @@ export default function CartPage() {
                       cursor: 'pointer'
                     }}
                   >
-                    Use ROBO10 (10% Off)
+                    Use VOLT10 (10% Off)
                   </button>
                   <button 
                     onClick={() => handleApplyCoupon('FREESHIP')}

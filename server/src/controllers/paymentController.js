@@ -110,7 +110,7 @@ exports.createRazorpayOrder = async (req, res) => {
       amount: amountInPaise,
       currency,
       receipt: orderReceipt,
-      notes: notes || { platform: 'RoboTech Robotics', gstCompliance: 'Active' }
+      notes: notes || { platform: 'VoltCart Robotics', gstCompliance: 'Active' }
     };
 
     const isPlaceholder = !KEY_ID || KEY_ID.includes('placeholder');

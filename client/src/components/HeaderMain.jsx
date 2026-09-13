@@ -115,7 +115,7 @@ export default function HeaderMain() {
           style={{ cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            {/* Robu Circular 'r' Icon */}
+            {/* VoltCart Circular 'V' Icon */}
             <div style={{
               width: '40px',
               height: '40px',
@@ -131,7 +131,7 @@ export default function HeaderMain() {
               boxShadow: '0 3px 10px rgba(243, 108, 33, 0.35)',
               lineHeight: 1
             }}>
-              r
+              V
             </div>
             <div>
               <div style={{
@@ -142,7 +142,7 @@ export default function HeaderMain() {
                 color: 'var(--robu-primary-orange)',
                 letterSpacing: '0.5px'
               }}>
-                ROBU.IN
+                VOLTCART
               </div>
               <div style={{
                 fontSize: '10px',

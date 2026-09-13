@@ -1,19 +1,19 @@
 /* ==========================================================================
-   ROBU.IN / VoltCart Official Design System Tokens & Global Styles
+   VOLTCART Official Design System Tokens & Global Styles
    High-Tech Modern Aesthetics • Glassmorphism • Micro-Animations • Fluid Transitions
    ========================================================================== */
 
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
-  /* Brand Primary Colors - Official Robu Tangerine Orange */
+  /* Brand Primary Colors - Official VoltCart Tangerine Orange */
   --robu-primary-orange: #F36C21;
   --robu-orange-hover: #E55B13;
   --robu-orange-light: #FFF4EE;
   --robu-orange-gradient: linear-gradient(135deg, #F36C21 0%, #E55B13 100%);
   --robu-orange-glow: 0 4px 16px rgba(243, 108, 33, 0.35);
 
-  /* Official Robu Signature Action Purple */
+  /* Official VoltCart Signature Action Purple */
   --robu-primary-purple: #380680;
   --robu-purple: #380680;
   --robu-purple-hover: #4A0E99;
@@ -28,7 +28,7 @@
   --robu-danger: #EF4444;
   --robu-danger-light: #FEF2F2;
 
-  /* Official Robu Backgrounds */
+  /* Official VoltCart Backgrounds */
   --robu-bg-top: #F4F5F8;
   --robu-bg-body: #F4F5F8;
   --robu-bg-card: #FFFFFF;
