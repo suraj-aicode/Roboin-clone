@@ -208,7 +208,7 @@ export default function RobuFooter() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Mail size={16} color="#A78BFA" />
-                <a href="mailto:support@robu.in" style={{ color: '#D1D5DB' }}>support@robu.in</a>
+                <a href="mailto:suraj40praj@gmail.com" style={{ color: '#D1D5DB' }}>suraj40praj@gmail.com</a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Clock size={16} color="#9CA3AF" />

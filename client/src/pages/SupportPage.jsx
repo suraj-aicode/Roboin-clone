@@ -14,6 +14,7 @@ export default function SupportPage() {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [createdTicketId, setCreatedTicketId] = useState('');
 
   const handleSubmit = async (e) => {
@@ -104,7 +105,7 @@ export default function SupportPage() {
 
           {/* Email Support */}
           <a 
-            href="mailto:support@robu.in"
+            href="mailto:suraj40praj@gmail.com"
             style={{ 
               backgroundColor: '#FFFFFF', 
               padding: '24px 20px', 
@@ -132,7 +133,7 @@ export default function SupportPage() {
               <Mail size={22} />
             </div>
             <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--robu-text-heading)' }}>Email Support</div>
-            <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--robu-primary-purple)', marginTop: '4px' }}>support@robu.in</div>
+            <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--robu-primary-purple)', marginTop: '4px' }}>suraj40praj@gmail.com</div>
             <div style={{ fontSize: '11.5px', color: 'var(--robu-text-muted)', marginTop: '4px' }}>Response within 2 hours</div>
           </a>
 

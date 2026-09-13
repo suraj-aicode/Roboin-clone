@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setUserState, setAuthModalOpen, logout } from '../redux/slices/authSlice';
-import { Phone, HelpCircle, User, ShieldCheck, MapPin, Lock, LogOut } from 'lucide-react';
+import { Phone, Mail, HelpCircle, User, ShieldCheck, MapPin, Lock, LogOut } from 'lucide-react';
 
 export default function TopUtilityBar() {
   const dispatch = useDispatch();
@@ -39,6 +39,23 @@ export default function TopUtilityBar() {
           >
             <Phone size={13} color="var(--robu-primary-orange)" />
             <span>1800 266 6123</span>
+          </a>
+
+          <span style={{ color: '#D1D5DB' }}>|</span>
+
+          <a 
+            href="mailto:suraj40praj@gmail.com" 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '6px', 
+              fontWeight: 500,
+              color: '#555555',
+              textDecoration: 'none'
+            }}
+          >
+            <Mail size={13} color="var(--robu-primary-purple)" />
+            <span>suraj40praj@gmail.com</span>
           </a>
 
           <span style={{ color: '#D1D5DB' }}>|</span>
