@@ -79,18 +79,27 @@ exports.getTickets = async (req, res) => {
 // @desc Create support ticket
 exports.createTicket = async (req, res) => {
   try {
-    const { customerName, customerEmail, category, priority, subject, description, relatedOrderNumber } = req.body;
+    const customerName = req.body.customerName || req.body.name || 'Customer';
+    const customerEmail = req.body.customerEmail || req.body.email || '';
+    const phone = req.body.phone || '';
+    const category = req.body.category || 'Technical Hardware Support';
+    const priority = req.body.priority || 'Medium';
+    const subject = req.body.subject || 'Support Inquiry';
+    const description = req.body.description || req.body.message || '';
+    const relatedOrderNumber = req.body.relatedOrderNumber || req.body.orderId || '';
+
     const ticketId = `TCK-2026-${Math.floor(1000 + Math.random() * 9000)}`;
 
     const ticket = await Ticket.create({
       ticketId,
       customerName,
       customerEmail,
+      phone,
       category,
       priority,
       subject,
       description,
-      relatedOrderNumber: relatedOrderNumber || '',
+      relatedOrderNumber,
       status: 'Open'
     });
 

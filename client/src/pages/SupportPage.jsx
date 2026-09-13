@@ -14,17 +14,30 @@ export default function SupportPage() {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [createdTicketId, setCreatedTicketId] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await fetch(`${API_URL}/api/admin/tickets`, {
+      const res = await fetch(`${API_URL}/api/community/tickets`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          customerName: formData.name,
+          customerEmail: formData.email,
+          phone: formData.phone,
+          category: formData.category,
+          priority: 'Medium',
+          subject: formData.subject,
+          description: formData.message,
+          relatedOrderNumber: formData.orderId
+        })
       });
+      const data = await res.json();
+      if (data?.data?.ticketId) {
+        setCreatedTicketId(data.data.ticketId);
+      }
     } catch (e) {
       console.warn('Backend offline; recorded locally', e);
     }
@@ -176,7 +189,7 @@ export default function SupportPage() {
               Support Ticket Created!
             </h2>
             <p style={{ color: 'var(--robu-text-muted)', fontSize: '14px', maxWidth: '440px', margin: '0 auto 24px' }}>
-              Your ticket reference is <strong>#TCK-{Math.floor(100000 + Math.random() * 900000)}</strong>. Our hardware engineers will respond via email shortly.
+              Your ticket reference is <strong>#{createdTicketId || `TCK-${Math.floor(100000 + Math.random() * 900000)}`}</strong>. Our hardware engineers will respond via email shortly.
             </p>
             <Link to="/" style={{ backgroundColor: 'var(--robu-primary-orange)', color: '#FFFFFF', padding: '10px 24px', borderRadius: '8px', fontWeight: 700, textDecoration: 'none', fontSize: '14px' }}>
               Return to Home

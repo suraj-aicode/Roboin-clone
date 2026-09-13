@@ -6,9 +6,9 @@ const TicketSchema = new mongoose.Schema({
   customerEmail: { type: String, required: true },
   category: { 
     type: String, 
-    enum: ['Technical Hardware Support', 'Order & Delivery Issue', 'GST Invoicing / Billing', 'Dead on Arrival (DOA)'],
     default: 'Technical Hardware Support'
   },
+  phone: { type: String, default: '' },
   priority: {
     type: String,
     enum: ['Low', 'Medium', 'High', 'Critical'],
